@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const NavbarContainer = styled.nav`
-  background-color: #3a5f0b;
+  background: linear-gradient(to right, #2c3e50, #4ca1af, #c4e0e5);
   color: #ffffff;
   padding: 1rem;
 `;
@@ -16,7 +16,7 @@ const NavbarBrand = styled(Link)`
 `;
 
 const NavbarItem = styled(Link)`
-  margin-right: 1rem;
+  margin-right: 2rem;
   color: #ffffff;
   text-decoration: none;
 
@@ -48,7 +48,7 @@ const BuyerNavbar = () => {
         <span className="navbar-toggler-icon"></span>
       </button>
       <div className="collapse navbar-collapse" id="navbarNav">
-        <ul className="navbar-nav">
+        <ul className="navbar-nav mx-auto">
           <li className="nav-item">
             <NavbarItem to="/market">Market</NavbarItem>
           </li>
@@ -63,6 +63,9 @@ const BuyerNavbar = () => {
       <NavbarProfileIcon
         src="https://via.placeholder.com/30x30.png?text=User"
         alt="Profile Icon"
+        onClick={() => {
+          window.location.href = "/user-login";
+        }}
       />
     </NavbarContainer>
   );
