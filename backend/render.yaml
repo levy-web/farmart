@@ -1,11 +1,11 @@
 databases:
-  - name: farmart
+  - name: backend_production
     databaseName: backend_production
-    user: farmart
+    user: backend_production
 
 services:
   - type: web
-    name: farmart
+    name: backend_production
     env: ruby
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
