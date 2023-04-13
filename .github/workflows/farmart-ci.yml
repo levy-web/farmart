@@ -18,6 +18,4 @@ jobs:
         with:
           ruby-version: '3.2.1'
       - run: cd backend && bundle install
-      - run: cd backend && bundle exec rails db:create
-      - run: cd backend && bundle exec rails db:migrate RAILS_ENV=test
       - run: cd backend && bundle exec rspec test
