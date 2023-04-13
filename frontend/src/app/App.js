@@ -1,7 +1,7 @@
 
 import './App.css';
 
-import BuyerNavbar from './components/buyer/BuyerNavbar';
+import BuyerNavbar from './components/buyer/navbar/BuyerNavbar';
 
 import { BrowserRouter } from 'react-router-dom';
 
