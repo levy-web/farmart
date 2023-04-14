@@ -8,7 +8,7 @@ import BuyerNavbar from './components/buyer/navbar/BuyerNavbar';
 import BuyerPage from './components/buyer/buyerpage/BuyerPage';
 import BuyerCart from './components/buyer/buyerpage/BuyerCart';
 
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
@@ -17,8 +17,15 @@ function App() {
       <BrowserRouter>
 
       <BuyerNavbar />
-      {/* <BuyerPage /> */}
-      <BuyerCart />
+      {/* <BuyerPage />
+      <BuyerCart /> */}
+      <Routes>
+      <Route path="/" element={< BuyerPage />} /> 
+      <Route path="/market" element={< BuyerPage />} /> 
+      <Route path="/cart" element={< BuyerCart />} /> 
+
+
+      </Routes>
       
       </BrowserRouter>
       
