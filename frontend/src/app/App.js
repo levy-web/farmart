@@ -5,7 +5,8 @@ import './App.css';
 
 
 import BuyerNavbar from './components/buyer/navbar/BuyerNavbar';
-// import BuyerPage from './components/buyer/buyerpage/BuyerPage';
+import BuyerPage from './components/buyer/buyerpage/BuyerPage';
+import BuyerCart from './components/buyer/buyerpage/BuyerCart';
 
 import { BrowserRouter } from 'react-router-dom';
 
@@ -17,6 +18,7 @@ function App() {
 
       <BuyerNavbar />
       {/* <BuyerPage /> */}
+      <BuyerCart />
       
       </BrowserRouter>
       

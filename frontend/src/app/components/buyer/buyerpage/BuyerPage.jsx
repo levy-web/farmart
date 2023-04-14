@@ -1,137 +1,112 @@
-import React, { useState } from "react";
-import { connect } from "react-redux";
-import { createStoreHook } from 'react-redux';
-// import { createStore } from "redux"; // import createStore
-import cartReducer from "./reducers"; // import cartReducer
+import React, { useState, useEffect } from 'react';
+import { Card, Button, Form } from 'react-bootstrap';
 
-const BuyerPage = (props) => {
-const [searchText, setSearchText] = useState("");
-const [filterBreed, setFilterBreed] = useState("");
-const [filterAge, setFilterAge] = useState("");
+// import BuyerCart from './BuyerCart';
 
-const { data } = props;
+const BuyerPage = () => {
+  const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedFilter, setSelectedFilter] = useState('');
+  const [filterValue, setFilterValue] = useState('');
 
-// create your Redux store using the rootReducer
-const store = createStoreHook(cartReducer);
+  useEffect(() => {
+    fetch("https://matomugo60.github.io/db/db.json")
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData(jsonData);
+      })
+      .catch((error) => console.error(error));
+  }, []);
 
-const handleSearch = (e) => {
-setSearchText(e.target.value);
-};
+  useEffect(() => {
+    const filtered = data.filter((item) => {
+      const searchTermMatch =
+        item.type?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.breed?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (item.age && item.age.toString().includes(searchTerm)) ||
+        (item.weight && item.weight.toString().includes(searchTerm)) ||
+        (item.price && item.price.toString().includes(searchTerm));
+      const filterValueMatch =
+        filterValue === '' ||
+        item[selectedFilter]?.toString().toLowerCase().includes(filterValue.toLowerCase());
+      return searchTermMatch && filterValueMatch;
+    });
+    setFilteredData(filtered);
+  }, [data, searchTerm, selectedFilter, filterValue]);
 
-const handleBreedFilter = (e) => {
-setFilterBreed(e.target.value);
-};
+  const handleSearchTermChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
 
-const handleAgeFilter = (e) => {
-setFilterAge(e.target.value);
-};
+  const handleSelectedFilterChange = (e) => {
+    setSelectedFilter(e.target.value);
+  };
 
-const handleAddToCart = (id) => {
-// dispatch an action to add item to cart
-const itemToAdd = data.filter((item) => item.id === id)[0];
-store.dispatch({ type: "ADD_TO_CART", payload: itemToAdd });
-};
+  const handleFilterValueChange = (e) => {
+    setFilterValue(e.target.value);
+  };
 
-// get the cart items from the store state
-const cartItems = store.getState().cartItems;
+  const handleAddToCart = (item) => {
+    // code to send data to cart component
+   
+  };
 
-const filteredData = data.filter(
-(item) =>
-item.breed.toLowerCase().includes(filterBreed.toLowerCase()) &&
-item.age.toString().includes(filterAge)
-);
-
-const searchedData = filteredData.filter(
-(item) =>
-item.type.toLowerCase().includes(searchText.toLowerCase()) ||
-item.breed.toLowerCase().includes(searchText.toLowerCase()) ||
-item.weight.toString().includes(searchText.toLowerCase()) ||
-item.price.toString().includes(searchText.toLowerCase())
-);
-
-return (
-<div className="container">
-<div className="row">
-{searchedData.map((item) => (
-<div className="col-md-6 mb-3" key={item.id}>
-<div className="card shadow">
-<div className="card-body d-flex">
-<div className="mr-3">
-<img
-src={item.imageUrl}
-alt={item.breed}
-style={{
-width: "150px",
-height: "150px",
-objectFit: "cover",
-}}
-/>
-</div>
-<div>
-<h5 className="card-title">{item.type}</h5>
-<p className="card-text">{item.breed} - {item.age} months old</p>
-<p className="card-text">{item.weight} kg</p>
-<p className="card-text">${item.price}</p>
-<button
-className="btn btn-primary"
-onClick={() => handleAddToCart(item.id)}
->
-Add to Cart
-</button>
-</div>
-</div>
-</div>
-</div>
-))}
-</div>
-<div className="row mt-3">
-<div className="col-md-4">
-<input
-         type="text"
-         className="form-control"
-         placeholder="Search"
-         value={searchText}
-         onChange={handleSearch}
-       />
-</div>
-<div className="col-md-4">
-<input
-         type="text"
-         className="form-control"
-         placeholder="Filter by Breed"
-         value={filterBreed}
-         onChange={handleBreedFilter}
-       />
-</div>
-<div className="col-md-4">
-    <input
-        type="text"
-        className="form-control"
-        placeholder="Filter by Age"
-        value={filterAge}
-        onChange={handleAgeFilter}
-    />
-</div>
-</div>
-<div className="row mt-3">
-    <div className="col-md-12">
-        <h3>Cart Items</h3>
-        <ul>
-            {cartItems.map((item) => (
-                <li key={item.id}>
-                    {item.type} - {item.breed} - {item.price}
-                </li>
-            ))}
-        </ul>
+  return (
+    <div>
+      <div className="mb-3">
+        <Form.Control
+          type="text"
+          placeholder="Search by type, breed, age, weight or price"
+          value={searchTerm}
+          onChange={handleSearchTermChange}
+        />
+      </div>
+      <div className="mb-3">
+        <Form.Control
+          as="select"
+          value={selectedFilter}
+          onChange={handleSelectedFilterChange}
+        >
+          <option value="">Filter by...</option>
+          <option value="breed">Breed</option>
+          <option value="age">Age</option>
+          <option value="weight">Weight</option>
+          <option value="price">Price</option>
+        </Form.Control>
+        {selectedFilter && (
+          <Form.Control
+            className="mt-3"
+            type="text"
+            placeholder={`Enter ${selectedFilter}...`}
+            value={filterValue}
+            onChange={handleFilterValueChange}
+          />
+        )}
+      </div>
+      {filteredData.map((item) => (
+        <Card key={item.id} className="mb-3 shadow">
+          <div className="row">
+            <div className="col-md-6">
+              <Card.Img variant="top" src={item.image} />
+            </div>
+            <div className="col-md-6 p-3">
+              <Card.Title>{item.description}</Card.Title>
+              <Card.Text>Type: {item.type}</Card.Text>
+              <Card.Text>Breed: {item.breed}</Card.Text>
+              <Card.Text>Age: {item.age}</Card.Text>
+              <Card.Text>Weight: {item.weight} kg</Card.Text>
+              <Card.Text>Price: ${item.price}</Card.Text>
+              <Button variant="primary" onClick={() => handleAddToCart(item)}>
+                Add to Cart
+              </Button>
+            </div>
+          </div>
+        </Card>
+      ))}
     </div>
-</div>
-</div>
-);
+  );
 };
-// map the data from the state to the props of the component
-const mapStateToProps = (state) => ({
-data: state.data,
-});
 
-// connect the component to the store
-export default connect(mapStateToProps)(BuyerPage);
+
+export default BuyerPage;
