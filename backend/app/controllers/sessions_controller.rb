@@ -14,26 +14,18 @@ class SessionsController < ApplicationController
 
   # for the admin/farmer
   def farmer_create
-    
+
     farmer = Farmer.find_by(email: params[:email])
-    
+
 
     if farmer && farmer.authenticate(params[:password])
       token = encode_token(farmer.id, farmer.email, "farmer")
-      
+
       # token = JWT.encode({farmer_id: farmer.id}, Rails.application.secrets.secret_key_base)
       render json: {message:"#{farmer.admin_name} succesfully logged in", data:{user:farmer,token:token}, status: :ok}
     else
-      
-      render json: {message:"farmer log in failed", data: {error: 'Invalid email or password'}}, status: :unprocessable_entity
-      
-    end
-  end
 
-  #logout buttons
-  def destroy
-    session[:user_id] = nil
-    session[:farmer_id] = nil
-    render json: { message: "Logged out" }
-  end
+      render json: {message:"farmer log in failed", data: {error: 'Invalid email or password'}}, status: :unprocessable_entity
+
+    end
   end
