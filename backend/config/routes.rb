@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :carts
-  resources :line_items
+  resources :line_items, only: [:create]
   resources :orders
   resources :reviews
   resources :farmers
