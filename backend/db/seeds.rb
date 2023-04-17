@@ -100,6 +100,22 @@ puts "seeding"
     )
   end
 
+
+#   LineItem.create([
+#   { order_id: 1, animal_id: 1, quantity: 2 },
+#   { order_id: 1, animal_id: 2, quantity: 1 },
+#   { order_id: 2, animal_id: 3, quantity: 3 },
+#   { order_id: 2, animal_id: 4, quantity: 2 },
+#   { order_id: 3, animal_id: 5, quantity: 1 }
+# ])
+
+
+# Cart.create(user_id: 1, animal_id: 1, quantity: 2, price: 19.99)
+# Cart.create(user_id: 2, animal_id: 3, quantity: 1, price: 25.50)
+# Cart.create(user_id: 1, animal_id: 2, quantity: 3, price: 12.99)
+# Cart.create(user_id: 3, animal_id: 1, quantity: 1, price: 19.99)
+
+
   puts "done seeding"
   
 
