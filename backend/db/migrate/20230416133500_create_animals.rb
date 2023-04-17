@@ -7,6 +7,7 @@ class CreateAnimals < ActiveRecord::Migration[7.0]
       t.integer :weight
       t.decimal :price
       t.integer :farmer_id
+      t.string :image_url
 
       t.timestamps
     end
