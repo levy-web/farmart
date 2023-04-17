@@ -32,21 +32,20 @@ class ApplicationController < ActionController::API
         if !auth_headers
             app_response(message: 'failed', status: 401, data: { info: 'Your request is not authorized.' })
         else
-            
+
             token = auth_headers.split(' ')[1]
-            
-            save_user_id(token)            
+
+            save_user_id(token)
         end
     end
 
     def save_user_id(token)
 
+
         @user = {uid:decode(token)[0]["data"]["uid"].to_i, user_type:decode(token)[0]["data"]["user"]}
-  
+
+
     end
-
-
-    private 
 
     def standard_error(exception)
         app_response(message: 'failed', data: { info: exception.message }, status: :unprocessable_entity)
