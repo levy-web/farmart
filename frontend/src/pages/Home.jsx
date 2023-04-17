@@ -1,9 +1,11 @@
-import { Navbar, Footer } from "../components";
+import { Navbar, Main, Animal, Footer } from "../components";
 
 function Home() {
   return (
     <>
       <Navbar />
+      <Main />
+      <Animal/>
       <Footer />
     </>
   )
