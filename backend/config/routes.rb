@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :carts
-  resources :line_items
+  resources :carts, only: [:index, :show, :create, :update, :destroy]
+  resources :line_items, only: [:index, :create]
   resources :orders
   resources :reviews
   resources :farmers
