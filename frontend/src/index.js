@@ -1,19 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './app/App'
+import App from './App';
 import reportWebVitals from './reportWebVitals';
-
-// import { Provider } from 'react-redux';
-// import { createStoreHook } from 'react-redux';
-
+import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    
     <App />
-    
   </React.StrictMode>
 );
 
