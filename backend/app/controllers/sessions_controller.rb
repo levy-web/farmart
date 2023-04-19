@@ -1,25 +1,32 @@
 class SessionsController < ApplicationController
-    def new
+     # for regular users
+  def create
+    user = User.find_by(email: params[:email])
+
+    if user && user.authenticate(params[:password])
+      token = JWT.encode({user_id: user.id}, Rails.application.secrets.secret_key_base)
+      render json: {token: token}
+    else
+      render json: {error: 'Invalid email or password'}, status: :unprocessable_entity
     end
-  
-    def create
-      user_or_farmer = User.find_by(email: params[:session][:email]) || Farmer.find_by(email: params[:session][:email])
-      if user_or_farmer && user_or_farmer.authenticate(params[:session][:password])
-        if user_or_farmer.is_a?(User)
-          log_in user_or_farmer
-          redirect_to user_path(user_or_farmer)
-        elsif user_or_farmer.is_a?(Farmer)
-          log_in_farmer user_or_farmer
-          redirect_to farmer_path(user_or_farmer)
-        end
-      else
-        flash.now[:danger] = 'Invalid email/password combination'
-        render 'new'
-      end
+  end
+
+  # for the admin/farmer
+  def farmer_create
+    admin = Farmer.find_by(email: params[:email])
+
+    if farmer && farmer.authenticate(params[:password])
+      token = JWT.encode({farmer_id: farmer.id}, Rails.application.secrets.secret_key_base)
+      render json: {token: token}
+    else
+      render json: {error: 'Invalid email or password'}, status: :unprocessable_entity
     end
-  
-    def destroy
-      log_out
-      redirect_to root_url
-    end
+  end
+
+  #logout buttons
+  def destroy
+    session[:user_id] = nil
+    session[:farmer_id] = nil
+    render json: { message: "Logged out" }
+  end
   end

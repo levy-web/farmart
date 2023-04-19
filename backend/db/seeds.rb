@@ -11,28 +11,28 @@ puts "seeding"
 User.create!(
   username: 'user1',
   email: 'user1@example.com',
-  password_digest: BCrypt::Password.create('password'), # use bcrypt to hash password
+  password_digest:'password', # use bcrypt to hash password
   address: '123 Main St, Anytown, USA'
 )
 
 User.create!(
   username: 'user2',
   email: 'user2@example.com',
-  password_digest: BCrypt::Password.create('password'),
+  password: 'password',
   address: '456 Elm St, Othertown, USA'
 )
 
 User.create!(
   username: 'user3',
   email: 'user3@example.com',
-  password_digest: BCrypt::Password.create('password'),
+  password: 'password',
   address: '789 Oak St, Another Town, USA'
 )
 
 User.create!(
   username: 'user4',
   email: 'user4@example.com',
-  password_digest: BCrypt::Password.create('password'),
+  password: 'password',
   address: '321 Maple St, Differenttown, USA'
 )
 
