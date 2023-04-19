@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from "react-redux";
-import { addAnimal } from '../redux/farmerAnimals/FarmerAnimalsActions';
+// import { useDispatch, useSelector } from "react-redux";
+// import { addAnimal } from '../redux/farmerAnimals/FarmerAnimalsActions';
+import FarmerNav from './FarmerNav';
 
 function AddSell() {
   const [name, setName] = useState('')
@@ -9,7 +10,7 @@ function AddSell() {
   const [age, setAge] = useState('')
   const [category, setCategory] = useState('')
   const [image, setImage] = useState(null)
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
   function nameChange(e){
     setName(e.target.value)
@@ -83,53 +84,40 @@ function AddSell() {
 
 
   return (
+    <>
+    <FarmerNav/>
     <div className='container mt-3 p-5'>
       <h2 className='text-center mb-5'>Insert your new animal</h2>
-      <form onSubmit={handleSubmit} className="row g-3">
-        <div className="mb-3 row">
+      <form onSubmit={handleSubmit} className="row m-auto g-3">
+        
           <label htmlFor="inputName" className="col-sm-2 col-form-label">Name</label>
-          <div className="col-sm-10">
-            <input type="text" name='name' value={name} onChange={nameChange} className="form-control" id="staticEmail"></input>
-          </div>
-        </div>
-        <div className="mb-3 row">
-          <label htmlFor="inputName" className="col-sm-2 col-form-label">Product Stock</label>
-          <div className="col-sm-10">
-            <input type="number" name='stock' value={stock} onChange={stockChange} className="form-control" id="staticEmail"></input>
-          </div>
-        </div>
-        <div className="mb-3 row">
-          <label htmlFor="inputBreed" className="col-sm-2 col-form-label">Breed</label>
-          <div className="col-sm-10">
-            <input type="text" name='breed' value={breed} onChange={breedChange} className="form-control" id="inputPassword"></input>
-          </div>
-        </div>
-        <div className="mb-3 row">
-          <label htmlFor="inputAge" className="col-sm-2 col-form-label">Age</label>
-          <div className="col-sm-10">
-            <input type="number" name='age' value={age} onChange={ageChange} className="form-control" id="inputPassword"></input>
-          </div>
-        </div>
-        <div className="mb-3 row">
-          <label htmlFor="inputCategory" className="col-sm-2 col-form-label">Category</label>
-          <div className="col-sm-10">
-          <select defaultValue={category} name='category' onChange={categoryChange} className="form-select form-select-sm" aria-label=".form-select-sm example">
-            <option defaultValue>Open this select menu</option>
+          <input type="text" name='name' value={name} onChange={nameChange} className="form-control" id="staticEmail"></input>
+       
+          <label htmlFor="inputName" className="col-sm-2 col-form-label">Product Stock</label>         
+          <input type="number" name='stock' value={stock} onChange={stockChange} className="form-control" id="staticEmail"></input>
+
+          <label htmlFor="inputCategory" className="col-sm-2 col-form-label">Category</label> <br/> 
+          <select defaultValue={category} name='category' onChange={categoryChange} className="form-select form-control form-select-lg mb-3" aria-label=".form-select-lg example">
+            <option defaultValue>Select Category</option>
             <option value="One">One</option>
             <option value="Two">Two</option>
             <option value="Three">Three</option>
-          </select>
-          </div>
-        </div>
-        <div className="mb-3 row">
-          <label htmlFor="inputImage" className="col-sm-2 col-form-label">Image</label>
-          <div className="col-sm-10">
-            <input onChange={imageChange} className="form-control" type="file" id="formFile"></input>
-          </div>
-        </div>
-        <button type='submit'>Sell Animal</button>
+          </select>  
+          
+       
+          <label htmlFor="inputBreed" className="col-sm-3 col-form-label">Breed</label>          
+          <input type="text" name='breed' value={breed} onChange={breedChange} className="form-control" id="inputPassword"></input>
+              
+          <label htmlFor="inputAge" className="col-sm-3 col-form-label">Age</label>          
+          <input type="number" name='age' value={age} onChange={ageChange} className="form-control" id="inputPassword"></input>
+        
+          <label htmlFor="inputImage" className="col-sm-2 col-form-label">Image</label>          
+          <input onChange={imageChange} className="form-control" type="file" id="formFile"></input>
+
+          <button className='mt-2 form-control bg-primary' type='submit'>Sell Animal</button>
       </form>
     </div>
+    </>
   )
 }
 

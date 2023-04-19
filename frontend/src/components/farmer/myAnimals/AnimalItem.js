@@ -6,7 +6,7 @@ function AnimalItem({animal}) {
   return (
     
     <div className="col-sm-2">
-      <NavLink className="text-decoration-none" to={`/animals/${animal.name}`}>
+      <NavLink className="text-decoration-none" to={`/farm/animals/${animal.name}`}>
         <div className="card m-1 h-100">
             <img src={animal.image_url} className="card-img-top" alt={animal.name}></img>
             <div className="card-body">

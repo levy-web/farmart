@@ -3,10 +3,10 @@ import {NavLink} from "react-router-dom"
 
 function FarmerNav() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light py-3 sticky-top">
       <div className='container'>
-      <NavLink className="navbar-brand text-light" to='/'>
-          FARMART
+      <NavLink className="navbar-brand" to='/'>
+          Farmart
       </NavLink>
       <button
           className="navbar-toggler"
@@ -20,31 +20,31 @@ function FarmerNav() {
       <span className="navbar-toggler-icon bg-light"></span>
       </button>
       <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav p-3  me-auto">
+          <ul className="navbar-nav p-3 m-auto my-2 text-center">
             <li className="nav-item active">
-                <NavLink className="nav-link text-light" to='for_sale'>
+                <NavLink className="nav-link" to='/farm/for_sale'>
                 My Animals
                 </NavLink>
             </li>
             <li className="nav-item">
-                <NavLink className="nav-link text-light" to='add_for_sale'>
-                Sell
+                <NavLink className="nav-link" to='/farm/add_for_sale'>
+                Add Animal
                 </NavLink>
             </li>
             <li className="nav-item">
-                <NavLink className="nav-link text-light" to='orders'>
-                Orders
+                <NavLink className="nav-link" to='/farm/orders'>
+                Dashboard
                 </NavLink>
             </li>
             <li className="nav-item">
-                <NavLink className="nav-link text-light" to='profile'>
+                <NavLink className="nav-link" to='/farm/profile'>
                 Profile
                 </NavLink>
             </li>
             </ul>
-            <ul className="navbar-nav p-3  ms-auto">
+            <ul className="navbar-nav p-3 m-auto my-2 text-center">
             <li className="nav-item">
-                <NavLink className="nav-link text-light" to='login'>
+                <NavLink className="nav-link" to='/login'>
                 logout
                 </NavLink>
             </li>

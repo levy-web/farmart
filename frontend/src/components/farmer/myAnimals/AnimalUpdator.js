@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {useParams} from 'react-router-dom'
+import FarmerNav from '../FarmerNav'
 
 function AnimalUpdator() {
   const [animal, setAnimal] = useState('')
@@ -50,7 +51,8 @@ function AnimalUpdator() {
     }
 
   return (
-
+    <>
+    <FarmerNav/>
     <div className='container p-2'>
       <div className="card mt-3" >
         <div className="row g-0">
@@ -74,6 +76,7 @@ function AnimalUpdator() {
         </span>
       </div>      
     </div>
+    </>
     
   )
 }
