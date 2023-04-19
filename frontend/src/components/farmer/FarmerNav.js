@@ -6,7 +6,7 @@ function FarmerNav() {
     <nav className="navbar navbar-expand-lg navbar-light bg-light py-3 sticky-top">
       <div className='container'>
       <NavLink className="navbar-brand" to='/'>
-          Farmart
+          FARMART
       </NavLink>
       <button
           className="navbar-toggler"
