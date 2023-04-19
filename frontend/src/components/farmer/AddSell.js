@@ -114,7 +114,7 @@ function AddSell() {
           <label htmlFor="inputImage" className="col-sm-2 col-form-label">Image</label>          
           <input onChange={imageChange} className="form-control" type="file" id="formFile"></input>
 
-          <button className='mt-2 form-control bg-primary' type='submit'>Sell Animal</button>
+          <button className='mt-2 form-control bg-primary text-white' type='submit'>Sell Animal</button>
       </form>
     </div>
     </>
