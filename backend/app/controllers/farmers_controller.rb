@@ -1,9 +1,9 @@
 class FarmersController < ApplicationController
-  before_action :set_farmer, only: %i[ show update destroy ]
+  #before_action :set_farmer, only: %i[ show update destroy ]
 
   # GET /farmers
   def index
-    @farmers = Farmer.all
+    farmers = Farmer.all
 
     render json: @farmers
   end
@@ -26,8 +26,8 @@ class FarmersController < ApplicationController
       render json: {message: "failed", data:{info:"password doesnt match confirm password"}}, status: :unprocessable_entity
     end
 
-    
-    
+
+
   end
 
   # PATCH/PUT /farmers/1

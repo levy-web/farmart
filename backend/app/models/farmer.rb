@@ -1,4 +1,5 @@
 class Farmer < ApplicationRecord
+    has_secure_password
     has_many :animals
     has_many :orders
 
