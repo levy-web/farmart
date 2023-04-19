@@ -43,7 +43,7 @@ Farmer.create!(
   location: "New York",
   contact_info: "555-555-5555",
   email: "john@example.com",
-  password_digest: BCrypt::Password.create('password')
+  password:'password'
 )
 
 Farmer.create!(
@@ -52,7 +52,7 @@ Farmer.create!(
   location: "California",
   contact_info: "555-555-5555",
   email: "jane@example.com",
-  password_digest: BCrypt::Password.create('password')
+  password: 'password'
 )
 
 Farmer.create!(
@@ -61,7 +61,7 @@ Farmer.create!(
   location: "Texas",
   contact_info: "555-555-5555",
   email: "robert@example.com",
-  password_digest: BCrypt::Password.create('password')
+  password: 'password'
 )
 
 # animals

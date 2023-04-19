@@ -15,13 +15,13 @@ class FarmersController < ApplicationController
 
   # POST /farmers
   def create
-    @farmer = Farmer.new(farmer_params)
+    @farmer = Farmer.create(farmer_params)
 
-    if @farmer.save
-      render json: @farmer, status: :created, location: @farmer
-    else
-      render json: @farmer.errors, status: :unprocessable_entity
-    end
+
+      render json: @farmer
+
+    
+    
   end
 
   # PATCH/PUT /farmers/1
