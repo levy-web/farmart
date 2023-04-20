@@ -8,115 +8,159 @@
 
 puts "seeding"
 
-# 5.times do
-#         user = User.create!(
-#           username: Faker::Internet.unique.username,
-#           email: Faker::Internet.unique.email,
-#           password_digest: 'password',
-#           address: Faker::Address.full_address
-#         )
-#         farmer = Farmer.create!(
-#           admin_name: Faker::Name.unique.name,
-#           farm_name: Faker::Company.unique.name,
-#           location: Faker::Address.city,
-#           contact_info: Faker::PhoneNumber.cell_phone,
-#           user_id: user,
-#           password: 'password',
-#           email: user.email
-#         )
-#       end
-      
-# create a fake user
-    User.create!(
-      username: Faker::Internet.username,
-      email: Faker::Internet.email,
-      password_digest: 'password', # Set default password for all users
-      address: Faker::Address.full_address
-    )
-  
-  
+User.create!(
+  username: 'user1',
+  email: 'user1@example.com',
+  password:'password', # use bcrypt to hash password
+  address: '123 Main St, Anytown, USA'
+)
+
+User.create!(
+  username: 'user2',
+  email: 'user2@example.com',
+  password: 'password',
+  address: '456 Elm St, Othertown, USA'
+)
+
+User.create!(
+  username: 'user3',
+  email: 'user3@example.com',
+  password: 'password',
+  address: '789 Oak St, Another Town, USA'
+)
+
+User.create!(
+  username: 'user4',
+  email: 'user4@example.com',
+  password: 'password',
+  address: '321 Maple St, Differenttown, USA'
+)
 
 # farmers
-# 10.times do
-#   farmer = Farmer.create(
-#     admin_name: Faker::Name.name,
-#     farm_name: Faker::Company.name,
-#     location: Faker::Address.city,
-#     contact_info: Faker::PhoneNumber.phone_number,
-#     email: Faker::Internet.email,
-#     password_digest: 'password'
-#   )
-# end
+Farmer.create!(
+  admin_name: "John Doe",
+  farm_name: "Doe Farms",
+  location: "New York",
+  contact_info: "555-555-5555",
+  email: "john@example.com",
+  password:'password'
+)
 
-  # animals
-10.times do
-    Animal.create!(
-      animal_type: Faker::Creature::Animal.name,
-      breed: Faker::Creature::Dog.breed,
-      age: rand(1..10),
-      weight: rand(10..500),
-      price: rand(500..5000),
-      farmer_id: rand(1..10), # assuming there are 10 farmers in the system
-      image_url: Faker::LoremFlickr.image(size: "500x500", search_terms: ['animal'])
-    )
-  end
-  
+Farmer.create!(
+  admin_name: "Jane Smith",
+  farm_name: "Smith Farms",
+  location: "California",
+  contact_info: "555-555-5555",
+  email: "jane@example.com",
+  password: 'password'
+)
 
-  # reviews
-7.times do
-    Review.create!(
-      user_id: rand(1..7), # assuming there are 7 users in the system
-      animal_id: rand(1..50), # assuming there are 50 animals in the system
-      farmer_id: rand(1..10), # assuming there are 10 farmers in the system
-      comment: Faker::Lorem.paragraph(sentence_count: 3),
-      rating: rand(1..5)
-    )
-  end
+Farmer.create!(
+  admin_name: "Robert Lee",
+  farm_name: "Lee Farms",
+  location: "Texas",
+  contact_info: "555-555-5555",
+  email: "robert@example.com",
+  password: 'password'
+)
 
-  # orders
-10.times do
-    order = Order.create!(
-      user_id: rand(1..10), # assuming there are 10 users in the system
-      status: ['pending', 'shipped', 'delivered'].sample,
-      total_amount: rand(100..1000)
-    )
-  #line item
-    3.times do
-      order.line_items.create!(
-        animal_id: rand(1..50), # assuming there are 50 animals in the system
-        quantity: rand(1..5),
-        price: rand(500..2000)
-      )
-    end
-  end
+# animals
+Animal.create!(
+  animal_type: "Horse",
+  breed: "Quarter Horse",
+  age: 4,
+  weight: 1000,
+  price: 2500,
+  farmer_id: 1,
+  image_url: "https://example.com/horse.jpg"
+)
 
-  # carts
-6.times do
-    Cart.create!(
-      user_id: rand(1..6), # assuming there are 6 users in the system
-      animal_id: rand(1..50), # assuming there are 50 animals in the system
-      quantity: rand(1..5),
-      price: rand(500..2000)
-    )
-  end
+Animal.create!(
+  animal_type: "Cow",
+  breed: "Angus",
+  age: 2,
+  weight: 1200,
+  price: 3000,
+  farmer_id: 2,
+  image_url: "https://example.com/cow.jpg"
+)
+
+Animal.create!(
+  animal_type: "Pig",
+  breed: "Berkshire",
+  age: 1,
+  weight: 250,
+  price: 500,
+  farmer_id: 3,
+  image_url: "https://example.com/pig.jpg"
+)
+
+Animal.create!(
+  animal_type: "Sheep",
+  breed: "Dorper",
+  age: 3,
+  weight: 150,
+  price: 750,
+  farmer_id: 1,
+  image_url: "https://example.com/sheep.jpg"
+)
+
+Animal.create!(
+  animal_type: "Goat",
+  breed: "Boer",
+  age: 2,
+  weight: 80,
+  price: 400,
+  farmer_id: 2,
+  image_url: "https://example.com/goat.jpg"
+)
+
+# Seed data for carts table
+3.times do
+  Cart.create(
+    user_id: rand(1..4), # assuming there are 4 users in the system
+    animal_id: rand(1..5), # assuming there are 5 animals in the system
+    quantity: rand(1..10),
+    price: rand(100..1000)
+  )
+end
+
+Order.create!(
+  user_id: 1,
+  farmer_id: 3,
+  status: 'pending',
+  total_amount: 100
+)
+
+Order.create!(
+  user_id: 2,
+  farmer_id: 3,
+  status: 'shipped',
+  total_amount: 250
+)
+
+Order.create!(
+  user_id: 3,
+  farmer_id: 3,
+  status: 'delivered',
+  total_amount: 500
+)
+
+Review.create(user_id: 1, animal_id: 2, farmer_id: 1, comment: "Great experience buying from this farmer!", rating: 4)
+Review.create(user_id: 2, animal_id: 1, farmer_id: 2, comment: "The meat was delicious, would definitely buy from this farmer again.", rating: 5)
+Review.create(user_id: 3, animal_id: 3, farmer_id: 2, comment: "The quality of the meat was good, but the delivery took longer than expected.", rating: 3)
+Review.create(user_id: 4, animal_id: 4, farmer_id: 3, comment: "The farmer was very responsive and helpful throughout the entire process.", rating: 4)
+
+LineItem.create([
+  { order_id: 1, animal_id: 1, quantity: 2 },
+  { order_id: 1, animal_id: 2, quantity: 1 },
+  { order_id: 2, animal_id: 3, quantity: 3 },
+  { order_id: 3, animal_id: 4, quantity: 2 }
+])
 
 
-#   LineItem.create([
-#   { order_id: 1, animal_id: 1, quantity: 2 },
-#   { order_id: 1, animal_id: 2, quantity: 1 },
-#   { order_id: 2, animal_id: 3, quantity: 3 },
-#   { order_id: 2, animal_id: 4, quantity: 2 },
-#   { order_id: 3, animal_id: 5, quantity: 1 }
-# ])
+puts "done seeding"
 
-
-# Cart.create(user_id: 1, animal_id: 1, quantity: 2, price: 19.99)
-# Cart.create(user_id: 2, animal_id: 3, quantity: 1, price: 25.50)
-# Cart.create(user_id: 1, animal_id: 2, quantity: 3, price: 12.99)
-# Cart.create(user_id: 3, animal_id: 1, quantity: 1, price: 19.99)
-
-
-  puts "done seeding"
   
 
 

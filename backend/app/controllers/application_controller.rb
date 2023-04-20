@@ -1,10 +1,11 @@
 class ApplicationController < ActionController::API
     include ActionController::Cookies
-    def encode_token(uid, email)
+    def encode_token(uid, email, user_type)
         payload = {
             data:{
                 uid: uid,
-                email: email
+                email: email,
+                user_type: user_type #add user type to payload
             },
             exp: Time.now.to_i + (6*3600)
         }
@@ -32,8 +33,9 @@ class ApplicationController < ActionController::API
         decoded_token = decode_token()
 
         if decoded_token
-            # take out the user id
+            # take out the user id and user type
             @uid = decoded_token[0]['data']['uid'].to_i
+            @user_type = decoded_token[0]['data']['user_type']
             # [{payload},{header},{verify_signature}]
             # {
             #     "id": 10,
