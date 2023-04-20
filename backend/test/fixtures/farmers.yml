@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  farm_name: MyString
+  location: MyString
+  contact_info: MyString
+  user_id: 1
+
+two:
+  farm_name: MyString
+  location: MyString
+  contact_info: MyString
+  user_id: 1
