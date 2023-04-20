@@ -129,21 +129,24 @@ Order.create!(
   user_id: 1,
   farmer_id: 3,
   status: 'pending',
-  total_amount: 100
+  total_amount: 100,
+  farmer_id: 2
 )
 
 Order.create!(
   user_id: 2,
   farmer_id: 3,
   status: 'shipped',
-  total_amount: 250
+  total_amount: 250,
+  farmer_id: 3
 )
 
 Order.create!(
   user_id: 3,
   farmer_id: 3,
   status: 'delivered',
-  total_amount: 500
+  total_amount: 500,
+  farmer_id: 1
 )
 
 Review.create(user_id: 1, animal_id: 2, farmer_id: 1, comment: "Great experience buying from this farmer!", rating: 4)

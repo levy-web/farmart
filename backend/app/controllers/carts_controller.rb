@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-    before_action :set_cart, only: [:show, :update, :destroy]
+  before_action :authorize
     # GET /carts
     def index
       @carts = Cart.all
