@@ -11,7 +11,7 @@ puts "seeding"
 User.create!(
   username: 'user1',
   email: 'user1@example.com',
-  password_digest:'password', # use bcrypt to hash password
+  password:'password', # use bcrypt to hash password
   address: '123 Main St, Anytown, USA'
 )
 
@@ -127,18 +127,21 @@ end
 
 Order.create!(
   user_id: 1,
+  farmer_id: 3,
   status: 'pending',
   total_amount: 100
 )
 
 Order.create!(
   user_id: 2,
+  farmer_id: 3,
   status: 'shipped',
   total_amount: 250
 )
 
 Order.create!(
   user_id: 3,
+  farmer_id: 3,
   status: 'delivered',
   total_amount: 500
 )
