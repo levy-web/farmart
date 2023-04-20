@@ -6,14 +6,32 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    // perform login logic here
-    setIsLoading(false);
+    setError("");
+    try {
+      const response = await fetch("/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
+      if (!response.ok) {
+        throw new Error("Invalid credentials");
+      }
+      // Save the authentication token to local storage or session storage
+      localStorage.setItem("token", "sample-token");
+      setIsLoading(false);
+      // Redirect the user to the home page or any other page
+      window.location.href = "/";
+    } catch (error) {
+      setIsLoading(false);
+      setError(error.message);
+    }
   };
 
   return (
@@ -46,6 +64,7 @@ const Login = () => {
                 />
               </div>
               <div className="my-3">
+                {error && <div className="alert alert-danger">{error}</div>}
                 <p>
                   Forgot your login details?{" "}
                   <Link to="/" className="text-decoration-underline text-info">
