@@ -47,7 +47,7 @@ const Register = () => {
           <div className="col-md-7 col-lg-7 col-sm-8 mx-auto">
             <div className="card shadow p-5">
               <h1 className="text-center mb-5">Join farmart</h1>
-              <form>
+              <form onSubmit={handleSubmit}>
                 <div className="form-group mb-3">
                   <input
                     type="text"
@@ -57,8 +57,6 @@ const Register = () => {
                     id="username"
                     placeholder="Username"
                     required
-                    value={name}
-                    onChange={handleNameChange}
                   />
                 </div>
                 <div className="form-group mb-3">
@@ -70,8 +68,6 @@ const Register = () => {
                     id="email"
                     placeholder="Email"
                     required
-                    value={email}
-                    onChange={handleEmailChange}
                   />
                 </div>
                 <div className="form-group mb-3">
@@ -83,8 +79,6 @@ const Register = () => {
                     id="password"
                     placeholder="Password"
                     required
-                    value={password}
-                    onChange={handlePasswordChange}
                   />
                 </div>
                 <div className="form-group mb-3">
@@ -132,9 +126,9 @@ const Register = () => {
                   <button
                     type="submit"
                     className="btn btn-primary btn-block w-100"
-                    disabled
+                    
                   >
-                    {isLoading ? 'Registering...' : 'Register'}
+                    Register
                   </button>
                 </div>
               </form>
@@ -152,18 +146,18 @@ const Register = () => {
                 </p>
                 <p>
                   Have an account?{' '}
-                  <Link to="/login"className="text-info">
-                                  Login
-                              </Link>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                </div>
-                  </div>
-                      <Footer />
-                                </>
-              );
-              };
+                  <Link to="/login" className="text-info">
+                    Login
+                  </Link>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </>
+  );
+};
 
 export default Register;

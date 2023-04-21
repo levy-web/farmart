@@ -36,9 +36,10 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
+   
     // perform login logic here
-    setIsLoading(false);
+    dispatch(loginUser(email, password))
+   
   };
 
 
@@ -75,7 +76,6 @@ const Login = () => {
                 />
               </div>
               <div className="my-3">
-                {error && <div className="alert alert-danger">{error}</div>}
                 <p>
                   Forgot your login details?{" "}
                   <Link to="/" className="text-decoration-underline text-info">
