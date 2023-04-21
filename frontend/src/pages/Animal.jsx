@@ -24,7 +24,7 @@ const Animal = () => {
     const getAnimal = async () => {
       setLoading(true);
       setLoading2(true);
-      const response = await fetch(`/animals/${animalName}`,{
+      const response = await fetch(`https://farmart-api.onrender.com/animals/${animalName}`,{
         method:"GET",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("TOKEN")}`
@@ -33,7 +33,7 @@ const Animal = () => {
       const data = await response.json();
       setProduct(data);
       setLoading(false);
-      const response2 = await fetch(`/animals`,{
+      const response2 = await fetch(`https://farmart-api.onrender.com/animals`,{
         method:"GET",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("TOKEN")}`

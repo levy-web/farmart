@@ -12,7 +12,7 @@ function AnimalUpdator() {
 
 
     useEffect(()=>{
-        fetch(`/animals/${params.animalsName}`)
+        fetch(`https://farmart-api.onrender.com/animals/${params.animalsName}`)
         .then((r)=>r.json())
         .then((data)=>{
           setAnimal(data)
@@ -27,7 +27,7 @@ function AnimalUpdator() {
     console.log(updateWeight)
 
     function handleDelete(){
-      fetch(`/animals/${params.animalsName}`,{
+      fetch(`https://farmart-api.onrender.com/animals/${params.animalsName}`,{
         method:"DELETE"
       })
       .then((r)=>r.json())
@@ -44,7 +44,7 @@ function AnimalUpdator() {
         weight: updateWeight
       }
 
-      fetch(`/animals/${params.animalsName}`,{
+      fetch(`https://farmart-api.onrender.com/animals/${params.animalsName}`,{
         method:"PUT",
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify(formData)
