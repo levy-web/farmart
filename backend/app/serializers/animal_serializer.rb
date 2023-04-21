@@ -1,3 +1,4 @@
 class AnimalSerializer < ActiveModel::Serializer
-  attributes :id, :animal_type, :breed, :age, :weight, :price, :farmer_id
+  include JSONAPI::Serializer
+  attributes :id, :name, :animal_type, :breed, :age, :weight, :price, :farmer_id, :image_url
 end

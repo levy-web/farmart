@@ -1,20 +1,48 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "../components/redux/user/UserAction";
 import { Footer, Navbar } from "../components";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
-  const handleUsernameChange = (e) => setUsername(e.target.value);
+  const user = useSelector((state) => state.user.buyer);
+  const isLoading = useSelector((state) => state.user.isLoading);
+  const error = useSelector((state) => state.user.error);
+  const token = useSelector((state)=>state.user.token)
+
+  localStorage.setItem("TOKEN", token)
+  
+  console.log(user)
+  console.log(isLoading)
+  console.log(error)
+
+  useEffect(()=>{
+    if (user){
+      navigate("/")
+    }
+
+  },[user])
+  
+
+  const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
+   
     // perform login logic here
-    setIsLoading(false);
+    dispatch(loginUser(email, password))
+   
   };
+
+
 
   return (
     <>
@@ -22,6 +50,8 @@ const Login = () => {
       <div className="container my-3 py-3">
         <h1 className="text-center">Log In</h1>
         <hr />
+        {error && <h6 className="text-danger text-center">{error}</h6>}
+        {user && <h6 className="text-success text-center">{user.message}</h6>}
         <div className="row my-4 h-100">
           <div className="col-md-4 col-lg-4 col-sm-8 mx-auto">
             <form onSubmit={handleSubmit}>
@@ -31,8 +61,8 @@ const Login = () => {
                   className="form-control"
                   id="username"
                   placeholder="Username"
-                  value={username}
-                  onChange={handleUsernameChange}
+                  value={email}
+                  onChange={handleEmailChange}
                 />
               </div>
               <div className="my-3">
