@@ -22,4 +22,6 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   post '/login', to: 'sessions#create'
+  get '/farmer', to: 'session#farmer_create'
+
 end

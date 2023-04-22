@@ -1,5 +1,5 @@
 class FarmersController < ApplicationController
-  #before_action :set_farmer, only: %i[ show update destroy ]
+  before_action :set_farmer, only: %i[ show update destroy ]
 
   # GET /farmers
   def index

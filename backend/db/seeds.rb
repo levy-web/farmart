@@ -8,23 +8,23 @@
 
 puts "seeding"
 
-# 5.times do
-#         user = User.create!(
-#           username: Faker::Internet.unique.username,
-#           email: Faker::Internet.unique.email,
-#           password_digest: 'password',
-#           address: Faker::Address.full_address
-#         )
-#         farmer = Farmer.create!(
-#           admin_name: Faker::Name.unique.name,
-#           farm_name: Faker::Company.unique.name,
-#           location: Faker::Address.city,
-#           contact_info: Faker::PhoneNumber.cell_phone,
-#           user_id: user,
-#           password: 'password',
-#           email: user.email
-#         )
-#       end
+5.times do
+        user = User.create!(
+          username: Faker::Internet.unique.username,
+          email: Faker::Internet.unique.email,
+          password_digest: 'password',
+          address: Faker::Address.full_address
+        )
+        # farmer = Farmer.create!(
+        #   admin_name: Faker::Name.unique.name,
+        #   farm_name: Faker::Company.unique.name,
+        #   location: Faker::Address.city,
+        #   contact_info: Faker::PhoneNumber.cell_phone,
+        #   user_id: user,
+        #   password: 'password',
+        #   email: user.email
+        # )
+      end
 
 # create a fake user
     User.create!(
@@ -47,7 +47,7 @@ puts "seeding"
 #     password: 'password'
 #   )
 # end
-farmer = Farmer.create(admin_name: 'kenney', farm_name: 'kamulu', password: "333333")
+# farmer = Farmer.create(admin_name: 'kenney', farm_name: 'kamulu', password: "333333")
 
   # animals
 10.times do
