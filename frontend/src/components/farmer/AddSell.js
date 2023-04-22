@@ -80,7 +80,7 @@ function AddSell() {
 
     //  dispatch(addAnimal(formData))
 
-     fetch('/animals',{
+     fetch('https://farmart-api.onrender.com/animals',{
       method: "POST",
       body:data
 
