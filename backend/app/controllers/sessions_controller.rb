@@ -1,22 +1,24 @@
 class SessionsController < ApplicationController
-     # for regular users
-  def create
+       # for regular users
+  def user_create
     user = User.find_by(email: params[:email])
 
     if user && user.authenticate(params[:password])
-      token = JWT.encode({user_id: user.id}, Rails.application.secrets.secret_key_base)
-      render json: {token: token}
+      token = encode_token(user.id, user.email, "buyer")
+      # token = JWT.encode({user_id: user.id, email:user.email}, ENV['task_train_key'], 'HS256')
+      render json: {message:"#{user.username} succesfully logged in", data:{user:user,token:token}, status: :ok}
     else
-      render json: {error: 'Invalid email or password'}, status: :unprocessable_entity
+      render json: {message:"user failed logged in", data: {error: 'Invalid email or password'}, status: :unprocessable_entity}
     end
   end
 
   # for the admin/farmer
   def farmer_create
-    admin = Farmer.find_by(email: params[:email])
+    farmer = Farmer.find_by(email: params[:email])
 
     if farmer && farmer.authenticate(params[:password])
-      token = JWT.encode({farmer_id: farmer.id}, Rails.application.secrets.secret_key_base)
+      token = encode_token(farmer.id, farmer.email, "farmer")
+      # token = JWT.encode({farmer_id: farmer.id}, Rails.application.secrets.secret_key_base)
       render json: {token: token}
     else
       render json: {error: 'Invalid email or password'}, status: :unprocessable_entity
