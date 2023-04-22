@@ -10,7 +10,7 @@ export const addAnimal = ((animal)=>{
 export function fetchAnimals() {
     return function (dispatch) {
       dispatch({ type: LOAD_ANIMALS });
-      fetch("/animals")
+      fetch("https://farmart-api.onrender.com/animals")
         .then((response) => response.json())
         .then((data) =>
           dispatch({

@@ -5,7 +5,9 @@ import FarmerNav from './FarmerNav';
 
 function AddSell() {
   const [name, setName] = useState('')
-  const [stock, setStock] = useState('')
+  const [type, setType] = useState('')
+  const [weight, setWeight] = useState('')
+  const [price, setPrice] = useState('')
   const [breed, setBreed] = useState('')
   const [age, setAge] = useState('')
   const [category, setCategory] = useState('')
@@ -16,8 +18,16 @@ function AddSell() {
     setName(e.target.value)
   }
 
-  function stockChange(e){
-    setStock(e.target.value)
+  function typeChange(e){
+    setType(e.target.value)
+  }
+
+  function weightChange(e){
+    setWeight(e.target.value)
+  }
+
+  function priceChange(e){
+    setPrice(e.target.value)
   }
 
   function breedChange(e){
@@ -42,12 +52,12 @@ function AddSell() {
     const data = new FormData();
 
     data.append("animal[name]", name);
-    data.append("animal[stock]", stock);
+    data.append("animal[animal_type]", type);
     data.append("animal[age]", age);
     data.append("animal[breed]", breed);
-    data.append("animal[category]", category);
+    data.append("animal[weight]", weight);
     data.append("animal[farmer_id]", 2);
-    data.append("animal[order_id]", 2);
+    data.append("animal[price]", price);
     data.append("animal[image]", image);
 
     handleSubmitToApi(data)
@@ -70,7 +80,7 @@ function AddSell() {
 
     //  dispatch(addAnimal(formData))
 
-     fetch('/animals',{
+     fetch('https://farmart-api.onrender.com/animals',{
       method: "POST",
       body:data
 
@@ -93,17 +103,14 @@ function AddSell() {
           <label htmlFor="inputName" className="col-sm-2 col-form-label">Name</label>
           <input type="text" name='name' value={name} onChange={nameChange} className="form-control" id="staticEmail"></input>
        
-          <label htmlFor="inputName" className="col-sm-2 col-form-label">Product Stock</label>         
-          <input type="number" name='stock' value={stock} onChange={stockChange} className="form-control" id="staticEmail"></input>
+          <label htmlFor="inputName" className="col-sm-2 col-form-label">Type</label>         
+          <input type="text" name='type' value={type} onChange={typeChange} className="form-control" id="staticEmail"></input>
 
-          <label htmlFor="inputCategory" className="col-sm-2 col-form-label">Category</label> <br/> 
-          <select defaultValue={category} name='category' onChange={categoryChange} className="form-select form-control form-select-lg mb-3" aria-label=".form-select-lg example">
-            <option defaultValue>Select Category</option>
-            <option value="One">One</option>
-            <option value="Two">Two</option>
-            <option value="Three">Three</option>
-          </select>  
-          
+          <label htmlFor="inputName" className="col-sm-2 col-form-label">Weight</label>         
+          <input type="number" name='weight' value={weight} onChange={weightChange} className="form-control" id="staticEmail"></input>
+
+          <label htmlFor="inputName" className="col-sm-2 col-form-label">Price</label>         
+          <input type="number" name='price' value={price} onChange={priceChange} className="form-control" id="staticEmail"></input>
        
           <label htmlFor="inputBreed" className="col-sm-3 col-form-label">Breed</label>          
           <input type="text" name='breed' value={breed} onChange={breedChange} className="form-control" id="inputPassword"></input>

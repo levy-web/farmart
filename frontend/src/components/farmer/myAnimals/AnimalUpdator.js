@@ -4,28 +4,30 @@ import FarmerNav from '../FarmerNav'
 
 function AnimalUpdator() {
   const [animal, setAnimal] = useState('')
-  const [updateName, setUpdateName]= useState('')
+  const [updateWeight, setUpdateWeight]= useState('')
+  const [updatePrice, setUpdatePrice]= useState('')
   const [updateAge, setUpdateAge] = useState('')
 
     const params = useParams()
 
 
     useEffect(()=>{
-        fetch(`/animals/${params.animalsName}`)
+        fetch(`https://farmart-api.onrender.com/animals/${params.animalsName}`)
         .then((r)=>r.json())
         .then((data)=>{
           setAnimal(data)
           setUpdateAge(data.age)
-          setUpdateName(data.name)
+          setUpdatePrice(data.price)
+          setUpdateWeight(data.weight)
           console.log(data)
         })
     }, [])
 
     console.log(updateAge)
-    console.log(updateName)
+    console.log(updateWeight)
 
     function handleDelete(){
-      fetch(`/animals/${params.animalsName}`,{
+      fetch(`https://farmart-api.onrender.com/animals/${params.animalsName}`,{
         method:"DELETE"
       })
       .then((r)=>r.json())
@@ -36,11 +38,13 @@ function AnimalUpdator() {
     function handleUpdate(){
 
       const formData = {
-        name:updateName,
-        age:updateAge
+        name:updateWeight,
+        age:updateAge,
+        price:updatePrice,
+        weight: updateWeight
       }
 
-      fetch(`/animals/${params.animalsName}`,{
+      fetch(`https://farmart-api.onrender.com/animals/${params.animalsName}`,{
         method:"PUT",
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify(formData)
@@ -61,8 +65,17 @@ function AnimalUpdator() {
           </div>
           <div className="col-md-6">
             <div className="card-body">
-              <label htmlFor="InputName" className="form-label text-capitalize fs-6 fw-bold fst-italic">Animal Name</label>
-              <input onChange={(e) => setUpdateName(e.target.value)} className='form-control' value={updateName}/><br/>
+            <label htmlFor="InputName" className="form-label text-capitalize fs-6 fw-bold fst-italic">{`Name: ${animal.name}`}</label><br/>
+              <label htmlFor="inputName" className="form-label text-capitalize fs-6 fw-bold fst-italic">{`Type: ${animal.animal_type}`}</label><br/>
+              <label htmlFor="inputBreed" className="form-label text-capitalize fs-6 fw-bold fst-italic">{`Breed: ${animal.breed}`}</label><br/>   
+        
+
+              <label htmlFor="inputName" className="form-label text-capitalize fs-6 fw-bold fst-italic">Weight</label>         
+              <input type="number" name='weight' value={updateWeight} onChange={(e)=>setUpdateWeight(e.target.value)} className="form-control" id="staticEmail"></input>
+
+              <label htmlFor="inputName" className="form-label text-capitalize fs-6 fw-bold fst-italic">Price</label>         
+              <input type="number" name='price' value={updatePrice} onChange={(e)=>setUpdatePrice(e.target.value)} className="form-control" id="staticEmail"></input>
+          
               <label htmlFor="InputName" className="form-label text-capitalize fs-6 fw-bold fst-italic">Animal Age</label>
               <input onChange={(e) => setUpdateAge(e.target.value)} className='form-control' value={updateAge}/>
               {/* <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>

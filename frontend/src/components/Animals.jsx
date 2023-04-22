@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addCart } from "../redux/action";
 
 import Skeleton from "react-loading-skeleton";
@@ -14,6 +14,7 @@ const Animals = () => {
   let componentMounted = true;
 
   const dispatch = useDispatch();
+  
 
   const addAnimal = (animal) => {
     dispatch(addCart(animal))
@@ -22,7 +23,12 @@ const Animals = () => {
   useEffect(() => {
     const getAnimals = async () => {
       setLoading(true);
-      const response = await fetch("");
+      const response = await fetch("https://farmart-api.onrender.com/animals",{
+        method:"GET",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("TOKEN")}`
+        }
+      })
       if (componentMounted) {
         setData(await response.clone().json());
         setFilter(await response.json());
@@ -88,23 +94,23 @@ const Animals = () => {
               <div className="card text-center h-100" key={animal.id}>
                 <img
                   className="card-img-top p-3"
-                  src={animal.image}
+                  src={animal.image_url}
                   alt="Card"
                   height={300}
                 />
                 <div className="card-body">
                   <h5 className="card-title">
-                    {animal.title.substring(0, 12)}...
+                    {animal.name.substring(0, 12)}...
                   </h5>
                   <p className="card-text">
-                    {animal.description.substring(0, 90)}...
+                    {animal.breed.substring(0, 90)}...
                   </p>
                 </div>
                 <ul className="list-group list-group-flush">
                   <li className="list-group-item lead">$ {animal.price}</li>
                 </ul>
                 <div className="card-body">
-                  <Link to={"/Animal/" + animal.id} className="btn btn-dark m-1">
+                  <Link to={"/Animal/" + animal.name} className="btn btn-dark m-1">
                     Buy Now
                   </Link>
                   <button className="btn btn-dark m-1" onClick={() => addAnimal(animal)}>

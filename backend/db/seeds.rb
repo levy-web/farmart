@@ -65,7 +65,8 @@ Farmer.create!(
 )
 
 # animals
-Animal.create!(
+one = Animal.create!(
+  name: "whores",
   animal_type: "Horse",
   breed: "Quarter Horse",
   age: 4,
@@ -75,7 +76,8 @@ Animal.create!(
   image_url: "https://images.unsplash.com/photo-1598974357801-cbca100e65d3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
 )
 
-Animal.create!(
+two = Animal.create!(
+  name: "kaunda",
   animal_type: "Cow",
   breed: "Angus",
   age: 2,
@@ -85,17 +87,19 @@ Animal.create!(
   image_url: "https://images.unsplash.com/photo-1527153857715-3908f2bae5e8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=788&q=80"
 )
 
-Animal.create!(
+three = Animal.create!(
+  name: "piglets",
   animal_type: "Pig",
   breed: "Berkshire",
   age: 1,
   weight: 250,
   price: 500,
   farmer_id: 3,
-  image_url: "https://images.unsplash.com/photo-1580682777666-24a7b3024e24?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+  image_url: "https://example.com/pig.jpg",
 )
 
-Animal.create!(
+four = Animal.create!(
+  name: "lostsheep",
   animal_type: "Sheep",
   breed: "Dorper",
   age: 3,
@@ -105,7 +109,8 @@ Animal.create!(
   image_url: "https://plus.unsplash.com/premium_photo-1666777246850-e18916172de7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
 )
 
-Animal.create!(
+five = Animal.create!(
+  name: "gablatura",
   animal_type: "Goat",
   breed: "Boer",
   age: 2,
@@ -114,6 +119,13 @@ Animal.create!(
   farmer_id: 2,
   image_url: "https://images.unsplash.com/photo-1588466585717-f8041aec7875?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
 )
+
+one.image.attach(io: File.open(Rails.root.join("public/horrrrrse.jpg")), filename: "horrrrrse.jpg")
+two.image.attach(io: File.open(Rails.root.join("public/cowsss.jpg")), filename: "cowsss.jpg")
+three.image.attach(io: File.open(Rails.root.join("public/pigs.jpg")), filename: "pigs.jpg")
+four.image.attach(io: File.open(Rails.root.join("public/sheep.jpg")), filename: "sheep.jpg")
+five.image.attach(io: File.open(Rails.root.join("public/goats.jpg")), filename: "goats.jpg")
+
 
 # Seed data for carts table
 3.times do
