@@ -30,8 +30,8 @@ const Animals = () => {
         }
       })
       if (componentMounted) {
-        setData(await response.clone().json());
-        setFilter(await response.json());
+        setData((await response.clone().json()).data);
+        setFilter((await response.json()).data);
         setLoading(false);
       }
 

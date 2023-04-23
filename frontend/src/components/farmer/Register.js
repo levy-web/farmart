@@ -26,7 +26,7 @@ const FarmerRegister = () => {
       "confPassword": confPassword
     }
 
-    fetch('http://localhost:3000/farmers',{
+    fetch('https://farmart-api.onrender.com/farmers',{
       method:"POST",
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify(formData)
