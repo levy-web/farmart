@@ -40,7 +40,7 @@ const Animal = () => {
         }
       });
       const data2 = await response2.json();
-      setSimilarAnimals(data2);
+      setSimilarAnimals(data2.data);
       setLoading2(false);
     };
     getAnimal();
