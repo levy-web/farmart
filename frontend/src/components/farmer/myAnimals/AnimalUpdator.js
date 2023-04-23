@@ -31,7 +31,7 @@ function AnimalUpdator() {
     console.log(updateWeight)
 
     function handleDelete(){
-      fetch(`http://localhost:3000/animals/${params.animalsName}`,{
+      fetch(`https://farmart-api.onrender.com/animals/${params.animalsName}`,{
         method:"DELETE",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("TOKEN")}`
@@ -51,7 +51,7 @@ function AnimalUpdator() {
         weight: updateWeight
       }
 
-      fetch(`http://localhost:3000/animals/${params.animalsName}`,{
+      fetch(`https://farmart-api.onrender.com/animals/${params.animalsName}`,{
         method:"PUT",
         headers:{
           "Content-Type":"application/json",

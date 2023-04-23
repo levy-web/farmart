@@ -9,7 +9,7 @@ export function loginFarmer(email, password) {
 
       try {
 
-        const response = await fetch(`http://localhost:3000/farmer-login`,{
+        const response = await fetch(`https://farmart-api.onrender.com/farmer-login`,{
         method:"POST",
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify({
