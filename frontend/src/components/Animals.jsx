@@ -23,15 +23,15 @@ const Animals = () => {
   useEffect(() => {
     const getAnimals = async () => {
       setLoading(true);
-      const response = await fetch("https://farmart-api.onrender.com/animals",{
+      const response = await fetch("http://localhost:3000/animals",{
         method:"GET",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("TOKEN")}`
         }
       })
       if (componentMounted) {
-        setData(await response.clone().json());
-        setFilter(await response.json());
+        setData((await response.clone().json()).data);
+        setFilter((await response.json()).data);
         setLoading(false);
       }
 
