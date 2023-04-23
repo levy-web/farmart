@@ -9,6 +9,9 @@ import { Orders } from './components/farmer/Orders'
 import AddSell from './components/farmer/AddSell';
 import Profile from './components/farmer/Profile';
 import ProtectedRoute from './ProtectedRoutes';
+import FarmerLogin from './components/farmer/Login';
+import FarmerRegister from './components/farmer/Register';
+import FarmersProtectedRoute from './FarmersProtectedRoutes';
 
 
 function App() {
@@ -27,12 +30,14 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
         {/* farm routes */}
-        <Route path={'/farm/for_sale'} element={<ProtectedRoute><MyAnimals/></ProtectedRoute>} />
-        <Route path={'/farm/add_for_sale'} element={<ProtectedRoute><AddSell/></ProtectedRoute>} />
-        <Route path={'/farm/orders'} element={<ProtectedRoute><Orders/></ProtectedRoute>} />
-        <Route path={'/farm/profile'} element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-        <Route path={'/farm/animals/:animalsName'} element={<ProtectedRoute><AnimalUpdator/></ProtectedRoute>} />
-        <Route path='/farm' element={<ProtectedRoute><Farm/></ProtectedRoute>}/>
+        <Route path={'/farm/for_sale'} element={<FarmersProtectedRoute><MyAnimals/></FarmersProtectedRoute>} />
+        <Route path={'/farm/add_for_sale'} element={<FarmersProtectedRoute><AddSell/></FarmersProtectedRoute>} />
+        <Route path={'/farm/orders'} element={<FarmersProtectedRoute><Orders/></FarmersProtectedRoute>} />
+        <Route path={'/farm/profile'} element={<FarmersProtectedRoute><Profile /></FarmersProtectedRoute>} />
+        <Route path={'/farm/animals/:animalsName'} element={<FarmersProtectedRoute><AnimalUpdator/></FarmersProtectedRoute>} />
+        <Route path='/farm' element={<FarmersProtectedRoute><Farm/></FarmersProtectedRoute>}/>
+        <Route path='/farmer-login' element={<FarmerLogin/>}/>
+        <Route path='/farmer-register' element={<FarmerRegister/>}/>
         
         <Route path="*" element={<PageNotFound />} />
         <Route path="/animal/*" element={<PageNotFound />} />

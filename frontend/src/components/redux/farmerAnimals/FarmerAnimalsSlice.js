@@ -1,4 +1,4 @@
-import { ADD_ANIMAL, LOAD_ANIMALS, FETCH_ANIMALS } from "./FarmerAnimalsTypes";
+import { ADD_ANIMAL, FETCH_ERROR, LOAD_ANIMALS, FETCH_ANIMALS } from "./FarmerAnimalsTypes";
 
 const initialState = {
     status: false,
@@ -19,6 +19,12 @@ const myAnimalsSlice = (state=initialState, action)=>{
             ...state,
             status: false,
             myAnimals: [...action.payload]
+        }
+
+        case FETCH_ERROR: return {
+            ...state,
+            status: false,
+            error: ''
         }
 
         case ADD_ANIMAL: return {

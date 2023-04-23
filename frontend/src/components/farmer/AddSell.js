@@ -56,7 +56,7 @@ function AddSell() {
     data.append("animal[age]", age);
     data.append("animal[breed]", breed);
     data.append("animal[weight]", weight);
-    data.append("animal[farmer_id]", 2);
+    // data.append("animal[farmer_id]", 2);
     data.append("animal[price]", price);
     data.append("animal[image]", image);
 
@@ -82,6 +82,9 @@ function AddSell() {
 
      fetch('https://farmart-api.onrender.com/animals',{
       method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("TOKEN")}`
+      },
       body:data
 
      })
