@@ -15,10 +15,16 @@ class FarmersController < ApplicationController
 
   # POST /farmers
   def create
-    @farmer = Farmer.create(farmer_params)
-
-
-      render json: @farmer
+    if(params[:confPassword] == farmer_params[:password])
+      @farmer = Farmer.create(farmer_params)
+      if @farmer.valid?
+        render json: {message:"succesfully registered", data:{user:@farmer}, status: :ok}
+      else
+        render json: {message: "failed", data:{error:@farmer.errors.full_messages}}, status: :unprocessable_entity
+      end
+    else
+      render json: {message: "failed", data:{info:"password doesnt match confirm password"}}, status: :unprocessable_entity
+    end
 
     
     
@@ -46,6 +52,6 @@ class FarmersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def farmer_params
-      params.require(:farmer).permit(:farm_name, :location, :contact_info, :user_id)
+      params.permit(:farm_name, :location, :contact_info, :admin_name, :email, :password)
     end
 end
