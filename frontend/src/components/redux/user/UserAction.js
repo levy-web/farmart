@@ -43,32 +43,9 @@ export function loginUser(email, password) {
         console.error(error)
       }
       
-
-      // fetch("/user-login",{
-      //   method:"POST",
-      //   headers:{"Content-Type":"application/json"},
-      //   body:JSON.stringify({
-      //     "email":email,
-      //     "password":password
-      //   })
-      // })
-      //   .then((response) => response.json())
-      //   .then((data) =>{
-
-      //     if (data.status === "ok") {
-      //       dispatch({
-      //         type: LOGIN_USER,
-      //         payload: data
-      //       })            
-      //     }      
-
-      //   })
-      //   .catch((error)=>{
-      //     dispatch({
-      //       type: LOGIN_USER_ERROR,
-      //       payload: error
-      //     }) 
-
-      //   })
     };
+
+
 }
+
+

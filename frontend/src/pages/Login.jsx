@@ -53,14 +53,15 @@ const Login = () => {
         {error && <h6 className="text-danger text-center">{error}</h6>}
         {user && <h6 className="text-success text-center">{user.message}</h6>}
         <div className="row my-4 h-100">
+
           <div className="col-md-4 col-lg-4 col-sm-8 mx-auto">
             <form onSubmit={handleSubmit}>
               <div className="my-3">
                 <input
                   type="text"
                   className="form-control"
-                  id="username"
-                  placeholder="Username"
+                  id="email"
+                  placeholder="Email"
                   value={email}
                   onChange={handleEmailChange}
                 />
@@ -77,9 +78,9 @@ const Login = () => {
               </div>
               <div className="my-3">
                 <p>
-                  Forgot your login details?{" "}
-                  <Link to="/" className="text-decoration-underline text-info">
-                    Get help signing in.
+                  Are you a farmer?{" "}
+                  <Link to="/farmer-login" className="text-decoration-underline text-info">
+                    Login as a farmer.
                   </Link>{" "}
                 </p>
               </div>

@@ -92,43 +92,21 @@ const Register = () => {
                     required
                   />
                 </div>
-                {/* <div className="form-group mb-3">
-                  <input
-                    type="text"
-                    onChange={(e)=>{setFarmName(e.target.value)}}
-                    className="form-control"
-                    id="farmName"
-                    placeholder="Farm Name"
-                    required
-                  />
-                </div> */}
-                {/* <div className="form-group mb-3">
-                  <input
-                    type="number"
-                    onChange={(e)=>{setContactInfo(e.target.value)}}
-                    className="form-control"
-                    id="number"
-                    placeholder="Phone Number"
-                    required
-                  />
-                </div>
-                <div className="form-group mb-3">
-                  <input
-                    type="password"
-                    onChange={(e)=>{setConfPassword(e.target.value)}}
-                    className="form-control"
-                    id="confPassword"
-                    placeholder="Confirm Password"
-                    required
-                  />
-                </div> */}
+                <div className="my-3">
+                <p>
+                  You have animals you want to sell?{" "}
+                  <Link to="/farmer-register" className="text-decoration-underline text-info">
+                    Register as a Farmer.
+                  </Link>{" "}
+                </p>
+              </div>
                 <div className="text-center mb-4">
                   <button
                     type="submit"
                     className="btn btn-primary btn-block w-100"
                     
                   >
-                    Register
+                    Register as buyer
                   </button>
                 </div>
               </form>
