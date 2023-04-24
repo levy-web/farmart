@@ -31,7 +31,7 @@ const Register = () => {
     .then((data)=>{
       console.log(data)
       navigate('/login')
-      
+
     })
 
   }
@@ -104,7 +104,7 @@ const Register = () => {
                   <button
                     type="submit"
                     className="btn btn-primary btn-block w-100"
-                    
+
                   >
                     Register as buyer
                   </button>
