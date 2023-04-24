@@ -107,7 +107,7 @@ const Animals = () => {
                   </p>
                 </div>
                 <ul className="list-group list-group-flush">
-                  <li className="list-group-item lead">$ {animal.price}</li>
+                  <li className="list-group-item lead">ksh {animal.price}</li>
                 </ul>
                 <div className="card-body">
                   <Link to={"/Animal/" + animal.name} className="btn btn-dark m-1">
