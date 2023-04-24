@@ -1,39 +1,43 @@
 import React, { useState } from 'react';
-import { Footer, Navbar } from "../components";
+import { Footer, Navbar } from "../../components";
 import { json, Link, useNavigate } from 'react-router-dom';
 
-const Register = () => {
+const FarmerRegister = () => {
 
-  const [username, setUserName] = useState('')
+  const [adminName, setAdminName] = useState('')
   const [farmName, setFarmName] = useState('')
-  const [address, setAddress] = useState('')
+  const [location, setLocation] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  // const [contactInfo, setContactInfo] = useState('')
-  // const [confPassword, setConfPassword] =useState('')
+  const [contactInfo, setContactInfo] = useState('')
+  const [confPassword, setConfPassword] =useState('')
+  const [error, setError] = useState(null);
   const navigate = useNavigate()
 
   function handleSubmit(e){
     e.preventDefault()
     const formData = {
-      "username":username,
-      "address":address,
+      "admin_name":adminName,
+      "farm_name":farmName,
+      "location":location,
       "email":email,
-      "password":password
+      "password":password,
+      "contact_info": contactInfo,
+      "confPassword": confPassword
     }
 
-    fetch('https://farmart-api.onrender.com/users',{
+    fetch('https://farmart-api.onrender.com/farmers',{
       method:"POST",
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify(formData)
     })
     .then((r)=>r.json())
     .then((data)=>{
+      if(data.status === 'ok'){
       console.log(data)
-      navigate('/login')
-      
+      }else setError(data.data.error)
+      // navigate('/login')
     })
-
   }
 
 
@@ -42,6 +46,7 @@ const Register = () => {
   return (
     <>
       <Navbar />
+      {error && <div className='text-danger'>{error}</div>}
       <div className="container my-3 py-3">
         <div className="row my-4 h-100">
           <div className="col-md-7 col-lg-7 col-sm-8 mx-auto">
@@ -51,11 +56,21 @@ const Register = () => {
                 <div className="form-group mb-3">
                   <input
                     type="text"
-                    value={username}
-                    onChange={(e)=>{setUserName(e.target.value)}}
+                    value={adminName}
+                    onChange={(e)=>{setAdminName(e.target.value)}}
                     className="form-control"
-                    id="username"
+                    id="admin_name"
                     placeholder="Username"
+                    required
+                  />
+                </div>
+                <div className="form-group mb-3">
+                  <input
+                    type="number"
+                    onChange={(e)=>{setContactInfo(e.target.value)}}
+                    className="form-control"
+                    id="number"
+                    placeholder="Phone Number"
                     required
                   />
                 </div>
@@ -72,6 +87,27 @@ const Register = () => {
                 </div>
                 <div className="form-group mb-3">
                   <input
+                    type="text"
+                    value={location}
+                    onChange={(e)=>{setLocation(e.target.value)}}
+                    className="form-control"
+                    id="location"
+                    placeholder="location"
+                    required
+                  />
+                </div>
+                <div className="form-group mb-3">
+                  <input
+                    type="text"
+                    onChange={(e)=>{setFarmName(e.target.value)}}
+                    className="form-control"
+                    id="farmName"
+                    placeholder="Farm Name"
+                    required
+                  />
+                </div>
+                <div className="form-group mb-3">
+                  <input
                     type="password"
                     value={password}
                     onChange={(e)=>{setPassword(e.target.value)}}
@@ -83,20 +119,19 @@ const Register = () => {
                 </div>
                 <div className="form-group mb-3">
                   <input
-                    type="text"
-                    value={address}
-                    onChange={(e)=>{setAddress(e.target.value)}}
+                    type="password"
+                    onChange={(e)=>{setConfPassword(e.target.value)}}
                     className="form-control"
-                    id="address"
-                    placeholder="address"
+                    id="confPassword"
+                    placeholder="Confirm Password"
                     required
                   />
                 </div>
                 <div className="my-3">
                 <p>
-                  You have animals you want to sell?{" "}
-                  <Link to="/farmer-register" className="text-decoration-underline text-info">
-                    Register as a Farmer.
+                    Do you want to Buy animals?{" "}
+                  <Link to="/register" className="text-decoration-underline text-info">
+                    register as a Buyer.
                   </Link>{" "}
                 </p>
               </div>
@@ -106,7 +141,7 @@ const Register = () => {
                     className="btn btn-primary btn-block w-100"
                     
                   >
-                    Register as buyer
+                    Register
                   </button>
                 </div>
               </form>
@@ -138,4 +173,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default FarmerRegister;

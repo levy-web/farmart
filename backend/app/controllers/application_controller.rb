@@ -40,10 +40,8 @@ class ApplicationController < ActionController::API
     end
 
     def save_user_id(token)
-        
 
         @user = {uid:decode(token)[0]["data"]["uid"].to_i, user_type:decode(token)[0]["data"]["user"]}
-        
   
     end
 
