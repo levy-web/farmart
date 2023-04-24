@@ -39,7 +39,7 @@ const Home = () => {
         <Carousel.Caption>
           <h3>Animals for sale </h3>
           <p>
-            Wooly sheep for sale.
+            Woolly sheep for sale.
           </p>
         </Carousel.Caption>
       </Carousel.Item>
