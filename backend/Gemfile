@@ -14,6 +14,7 @@ gem 'pg', '~> 1.4', '>= 1.4.6'
 # Use the Puma web server [https://github.com/puma/puma]
 #gem "puma", "~> 5.0"
 gem 'puma', '~> 6.2', '>= 6.2.2'
+gem 'rspec-rails', '~> 5.0'
 
 # gem "jbuilder"
 
