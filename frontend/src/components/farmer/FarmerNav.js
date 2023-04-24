@@ -5,6 +5,7 @@ function FarmerNav() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light py-3 sticky-top">
       <div className='container'>
+
       <NavLink className="navbar-brand" to='/farm/orders'>
           Farmart
       </NavLink>

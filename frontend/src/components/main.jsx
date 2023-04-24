@@ -12,11 +12,11 @@ const Home = () => {
             height={1000}
           />
           <div className="card-img-overlay d-flex align-items-center">
-            <div className="container" style={{position:'absolute',top:0,left:0}}>
-              <h5 className="card-title fs-1 text fw-bold" style={{color:'black'}}>Welcome to Farmat</h5>
-              <p className="card-text fs-5 d-none d-sm-block " style={{color:'black'}}>
-              Buy farm animals directly from farmers and support their livelihoods
-              </p>
+            <div className="container mt-3" style={{position:'absolute',top:0,left:0}}>
+            <h5 className="card-title fs-1 text fw-bold" style={{ color: 'black', textAlign: 'center', margin: 3 }}>Welcome to Farmat</h5>
+                <p className="card-text fs-5 d-none d-sm-block " style={{ color: 'black', textAlign: 'center', margin: 3 }}>
+                  Buy farm animals directly from farmers and support their livelihoods
+                </p>
             </div>
           </div>
         </div>
