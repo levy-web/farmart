@@ -103,12 +103,6 @@ const Login = () => {
               Register
             </Link>{" "}
           </p>
-          <p>
-            Forgort password?{" "}
-            <Link to="/forgot-password" className="text-decoration-underline text-info">
-              Change password
-            </Link>{" "}
-          </p>
         </div>
       </div>
       <Footer />

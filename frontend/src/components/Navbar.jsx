@@ -49,7 +49,7 @@ const Navbar = () => {
 
                             <Dropdown.Menu>
                                 <Dropdown.Item href="/login">User</Dropdown.Item>
-                                <Dropdown.Item href="/login">Farmer</Dropdown.Item>
+                                <Dropdown.Item href="/farmer-login">Farmer</Dropdown.Item>
 
                             </Dropdown.Menu>
                         </Dropdown>
