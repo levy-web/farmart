@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   put '/animals/:name', to: 'animals#update'
   delete '/animals/:name', to: 'animals#destroy'
 
-  
+
   post '/user-login', to: 'sessions#user_create'
   post '/farmer-login', to: 'sessions#farmer_create'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -23,5 +23,10 @@ Rails.application.routes.draw do
 
   post '/login', to: 'sessions#create'
   get '/farmer', to: 'session#farmer_create'
+
+  # namespace :api do
+  #   post 'forgot_password', to: 'password_resets#forgot_password'
+  # end
+  post '/forgot_password', to: 'users#forgot_password'
 
 end
