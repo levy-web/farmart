@@ -21,7 +21,7 @@ function Farm() {
             <table striped bordered hover>
               <thead>
                 <tr>
-                  <th>ID</th>
+                  <th>Id</th>
                   <th>Customer</th>
                   <th>Total</th>
                 </tr>
