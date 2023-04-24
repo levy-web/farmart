@@ -11,7 +11,7 @@ const Navbar = () => {
             <div className="container">
                 <NavLink className="navbar-brand fw-bold fs-4 px-2" to="/">
                         <img
-                    src="./assets/logo.png"
+                    src="./assets/farm.png"
                     width="70"
                     height="70"
                     className="d-inline-block align-top"
