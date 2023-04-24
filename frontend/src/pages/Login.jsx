@@ -18,7 +18,7 @@ const Login = () => {
   const token = useSelector((state)=>state.user.token)
 
   localStorage.setItem("TOKEN", token)
-  
+
   console.log(user)
   console.log(isLoading)
   console.log(error)
@@ -29,17 +29,17 @@ const Login = () => {
     }
 
   },[user])
-  
+
 
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-   
+
     // perform login logic here
     dispatch(loginUser(email, password))
-   
+
   };
 
 
@@ -101,6 +101,12 @@ const Login = () => {
             Don't have an account?{" "}
             <Link to="/Register" className="text-decoration-underline text-info">
               Register
+            </Link>{" "}
+          </p>
+          <p>
+            Forgort password?{" "}
+            <Link to="/forgot-password" className="text-decoration-underline text-info">
+              Change password
             </Link>{" "}
           </p>
         </div>

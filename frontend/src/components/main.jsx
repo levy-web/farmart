@@ -1,9 +1,51 @@
 import React from "react";
+import Carousel from 'react-bootstrap/Carousel';
 
 const Home = () => {
   return (
     <>
-      <div className="hero border-1 pb-3">
+    <div className="container">
+    <Carousel>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="./assets/coder.jpg"
+          alt="First slide"
+        />
+        <Carousel.Caption>
+          <h3>First slide label</h3>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="./assets/goat.jpg"
+          alt="Second slide"
+        />
+
+        <Carousel.Caption>
+          <h3>Second slide label</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="./assets/sheep.jpg"
+          alt="Third slide"
+        />
+
+        <Carousel.Caption>
+          <h3>Third slide label</h3>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          </p>
+        </Carousel.Caption>
+      </Carousel.Item>
+    </Carousel>
+    </div>
+      {/* <div className="hero border-1 pb-3">
         <div className="card bg-dark text-white border-0 mx-3">
           <img
             className="card-img img-fluid"
@@ -20,7 +62,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
