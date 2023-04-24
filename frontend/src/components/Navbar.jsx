@@ -11,7 +11,7 @@ const Navbar = () => {
             <div className="container">
                 <NavLink className="navbar-brand fw-bold fs-4 px-2" to="/">
                         <img
-                    src="./assets/logo.JPG"
+                    src="./assets/logo.png"
                     width="70"
                     height="70"
                     className="d-inline-block align-top"
@@ -53,7 +53,18 @@ const Navbar = () => {
 
                             </Dropdown.Menu>
                         </Dropdown>
-                        <NavLink to="/register" className="btn btn-outline-dark m-2"><i className="fa fa-user-plus mr-1"></i> Register</NavLink>
+                        {/* <NavLink to="/register" className="btn btn-outline-dark m-2"><i className="fa fa-user-plus mr-1"></i> Register</NavLink> */}
+                        <Dropdown className="btn btn-outline-dark m-2">
+                            <Dropdown.Toggle variant="secondary" id="dropdown-basic" >
+                                Register
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                                <Dropdown.Item href="/register">User</Dropdown.Item>
+                                <Dropdown.Item href="/register">Farmer</Dropdown.Item>
+
+                            </Dropdown.Menu>
+                        </Dropdown>
                         <NavLink to="/cart" className="btn btn-outline-dark m-2"><i className="fa fa-cart-shopping mr-1"></i> Cart ({state.length}) </NavLink>
                     </div>
                 </div>
