@@ -30,8 +30,8 @@ const Animals = () => {
         }
       })
       if (componentMounted) {
-        setData(await response.clone().json());
-        setFilter(await response.json());
+        setData((await response.clone().json()).data);
+        setFilter((await response.json()).data);
         setLoading(false);
       }
 
@@ -72,7 +72,7 @@ const Animals = () => {
   };
 
   const filterAnimal = (cat) => {
-    const updatedList = data.filter((item) => item.category === cat);
+    const updatedList = data.filter((item) => item.animal_type === cat);
     setFilter(updatedList);
   }
   const ShowAnimals = () => {
@@ -80,12 +80,12 @@ const Animals = () => {
       <>
         <div className="buttons text-center py-5">
           <button className="btn btn-outline-dark btn-sm m-2" onClick={() => setFilter(data)}>All</button>
-          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterAnimal("men's clothing")}>Cows</button>
-          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterAnimal("women's clothing")}>
+          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterAnimal("Cow")}>Cows</button>
+          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterAnimal("Horse")}>
             Horses
           </button>
-          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterAnimal("jewelery")}>Goats</button>
-          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterAnimal("electronics")}>Sheep</button>
+          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterAnimal("Goat")}>Goats</button>
+          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterAnimal("Sheep")}>Sheep</button>
         </div>
 
         {filter.map((animal) => {
