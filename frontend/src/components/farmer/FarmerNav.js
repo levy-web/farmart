@@ -7,7 +7,13 @@ function FarmerNav() {
       <div className='container'>
 
       <NavLink className="navbar-brand" to='/farm'>
-          Farmart
+      <img
+                    src="./assets/farm.png"
+                    width="70"
+                    height="70"
+                    className="d-inline-block align-top"
+                    alt="FARMART"
+                    />
       </NavLink>
       <button
           className="navbar-toggler"
