@@ -1,4 +1,4 @@
-import { ADD_ORDER, FETCH_ORDERS, LOAD_ORDERS } from "./OrderType"
+import { ADD_ORDER, FETCH_ORDERS, LOAD_ORDERS, REJECT_ORDERS } from "./OrderType"
 
 const initialState = {
     status: false,
@@ -22,6 +22,12 @@ const orderSlice = (state=initialState, action)=>{
         case ADD_ORDER: return {
             ...state,
             myAnimals: [...state.myAnimals, action.payload]
+        }
+        case REJECT_ORDERS: 
+        let rr = state.orders.filter((item)=> item.id !== action.payload)
+        return {
+            ...state,
+            orders: [...rr]
         }
         default: return state
     }

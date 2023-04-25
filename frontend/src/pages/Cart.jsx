@@ -23,6 +23,26 @@ const Cart = () => {
     );
   };
 
+  function handleSubmit(){
+    state.map((item) => {
+      fetch('https://farmart-api.onrender.com/carts',{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json",
+          "Authorization": `Bearer ${localStorage.getItem("TOKEN")}`
+        },
+        body:JSON.stringify({
+          "animal_id": item.id,
+          "quantity": item.qty,
+          "price": item.price
+        })
+      })
+      .then((r)=>r.json())
+      .then((data)=>console.log(data))
+    })
+  }
+  console.log(state)
+
   const addItem = (animal) => {
     dispatch(addCart(animal));
   };
@@ -143,8 +163,9 @@ const Cart = () => {
                     </ul>
 
                     <Link
-                      to="/checkout"
+                      // to="/checkout"
                       className="btn btn-dark btn-lg btn-block"
+                      onClick={handleSubmit}
                     >
                       Go to checkout
                     </Link>
