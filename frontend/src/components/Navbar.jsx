@@ -48,8 +48,8 @@ const Navbar = () => {
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu>
-                                <Dropdown.Item href="/login">User</Dropdown.Item>
-                                <Dropdown.Item href="/farmer-login">Farmer</Dropdown.Item>
+                                <Dropdown.Item> <NavLink className="nav-link" to="/login">User</NavLink></Dropdown.Item>
+                                <Dropdown.Item> <NavLink className="nav-link" to="/farmer-login">Farmer</NavLink></Dropdown.Item>
 
                             </Dropdown.Menu>
                         </Dropdown>
@@ -60,8 +60,8 @@ const Navbar = () => {
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu>
-                                <Dropdown.Item href="/register">User</Dropdown.Item>
-                                <Dropdown.Item href="/farmer-register">Farmer</Dropdown.Item>
+                                <Dropdown.Item> <NavLink className="nav-link" to="/register">User</NavLink></Dropdown.Item>
+                                <Dropdown.Item> <NavLink className="nav-link" to="/farmer-register">Farmer</NavLink></Dropdown.Item>
 
                             </Dropdown.Menu>
                         </Dropdown>

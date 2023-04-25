@@ -6,15 +6,15 @@ function FarmerNav() {
     <nav className="navbar navbar-expand-lg navbar-light bg-light py-3 sticky-top">
       <div className='container'>
 
-      <NavLink className="navbar-brand" to='/farm'>
-      <img
+      <NavLink className="navbar-brand fw-bold fs-4 px-2" to="/farm">
+                        <img
                     src="./assets/farm.png"
                     width="70"
                     height="70"
                     className="d-inline-block align-top"
                     alt="FARMART"
                     />
-      </NavLink>
+                </NavLink>
       <button
           className="navbar-toggler"
           type="button"
@@ -28,12 +28,7 @@ function FarmerNav() {
       </button>
       <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav p-3 m-auto my-2 text-center">
-          <li className="nav-item active">
-                <NavLink className="nav-link" to='/farm'>
-                Dashboard
-                </NavLink>
-            </li>
-            <li className="nav-item">
+            <li className="nav-item active">
                 <NavLink className="nav-link" to='/farm/for_sale'>
                 My Animals
                 </NavLink>
@@ -45,17 +40,12 @@ function FarmerNav() {
             </li>
             <li className="nav-item">
                 <NavLink className="nav-link" to='/farm/orders'>
-                Orders
+                Dashboard
                 </NavLink>
             </li>
             <li className="nav-item">
                 <NavLink className="nav-link" to='/farm/profile'>
                 Profile
-                </NavLink>
-            </li>
-            <li className="nav-item">
-                <NavLink className="nav-link" to='/'>
-              Buy
                 </NavLink>
             </li>
             </ul>
