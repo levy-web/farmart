@@ -6,9 +6,15 @@ function FarmerNav() {
     <nav className="navbar navbar-expand-lg navbar-light bg-light py-3 sticky-top">
       <div className='container'>
 
-      <NavLink className="navbar-brand" to='/farm/orders'>
-          Farmart
-      </NavLink>
+      <NavLink className="navbar-brand fw-bold fs-4 px-2" to="/farm">
+                        <img
+                    src="./assets/farm.png"
+                    width="70"
+                    height="70"
+                    className="d-inline-block align-top"
+                    alt="FARMART"
+                    />
+                </NavLink>
       <button
           className="navbar-toggler"
           type="button"
