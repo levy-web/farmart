@@ -5,4 +5,3 @@ set -o errexit
 bundle install
 rails db:create
 bundle exec rails db:migrate
-bundle exec rails db:seed
