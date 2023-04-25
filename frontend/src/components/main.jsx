@@ -32,14 +32,14 @@ const Home = () => {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://images.unsplash.com/photo-1598612518644-2cf30290e3e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGZhcm0lMjBhbmltYWxzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
+          src="https://images.unsplash.com/photo-1516704135885-dc4c68a189e3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzJ8fGZhcm0lMjBhbmltYWxzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
           alt="Third slide"
         />
 
         <Carousel.Caption>
           <h3>Animals for sale </h3>
           <p>
-            Dairy Goat for sale.
+            Horses for sale.
           </p>
         </Carousel.Caption>
       </Carousel.Item>
