@@ -54,15 +54,15 @@ function FarmerNav() {
                 </NavLink>
             </li>
             <li className="nav-item">
-                <NavLink className="nav-link" to='/'>
-              Buy
+                <NavLink className="nav-link" to='/Animal'>
+              Buy Animals
                 </NavLink>
             </li>
             </ul>
             <ul className="navbar-nav p-3 m-auto my-2 text-center">
             <li className="nav-item">
                 <NavLink className="nav-link" to='/login'>
-                logout
+                Logout
                 </NavLink>
             </li>
           </ul>
