@@ -17,12 +17,12 @@ function Profile() {
     <>
     <FarmerNav />
     <div className='container'>
-        <h3>farmer details</h3>
+        <h3>Farmer Details</h3>
         <br/>
         <div className='m-auto'>
             <img src="" alt="pic" />
-            <h2>john doe</h2>
-            <p>best farm producer seller in town</p>
+            <h2>John Doe</h2>
+            <p>Best farm producer seller in town</p>
             <a href="farmer.com">"farmer.com"</a>
         </div>      
     </div>
