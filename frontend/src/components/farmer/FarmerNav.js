@@ -8,7 +8,7 @@ function FarmerNav() {
 
       <NavLink className="navbar-brand" to='/farm'>
       <img
-                    src="./assets/farm.png"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMRX6HhxKOgDVv06vF1Qk2I1OLsbBAh7Jd-w&usqp=CAU"
                     width="70"
                     height="70"
                     className="d-inline-block align-top"
@@ -55,14 +55,14 @@ function FarmerNav() {
             </li>
             <li className="nav-item">
                 <NavLink className="nav-link" to='/Animal'>
-              Buy
+              Buy Animals
                 </NavLink>
             </li>
             </ul>
             <ul className="navbar-nav p-3 m-auto my-2 text-center">
             <li className="nav-item">
                 <NavLink className="nav-link" to='/login'>
-                logout
+                Logout
                 </NavLink>
             </li>
           </ul>
