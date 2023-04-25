@@ -8,7 +8,7 @@ function FarmerNav() {
 
       <NavLink className="navbar-brand" to='/farm'>
       <img
-                    src="./assets/farm.png"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMRX6HhxKOgDVv06vF1Qk2I1OLsbBAh7Jd-w&usqp=CAU"
                     width="70"
                     height="70"
                     className="d-inline-block align-top"
