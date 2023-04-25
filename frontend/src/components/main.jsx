@@ -9,37 +9,37 @@ const Home = () => {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="./assets/coder.jpg"
+          src="https://images.unsplash.com/photo-1614183653806-b4b9daed1954?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGZhcm0lMjBhbmltYWxzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
           alt="First slide"
         />
         <Carousel.Caption>
           <h3>Animals for sale</h3>
-          <p>Dairy cows for sale.</p>
+          <p>Woolly Sheep for Sale.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="./assets/goat.jpg"
+          src="https://images.unsplash.com/photo-1516467508483-a7212febe31a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZmFybSUyMGFuaW1hbHN8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"
           alt="Second slide"
         />
 
         <Carousel.Caption>
           <h3>Animals for sale</h3>
-          <p>Dairy goat for sale.</p>
+          <p>Piglet for sale.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="./assets/sheep.jpg"
+          src="https://images.unsplash.com/photo-1598612518644-2cf30290e3e5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGZhcm0lMjBhbmltYWxzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
           alt="Third slide"
         />
 
         <Carousel.Caption>
           <h3>Animals for sale </h3>
           <p>
-            Wooly sheep for sale.
+            Dairy Goat for sale.
           </p>
         </Carousel.Caption>
       </Carousel.Item>
