@@ -7,9 +7,27 @@ function OrdersItem({orders}) {
   const order = useSelector((state) => state.orders.orders);
   const dispatch = useDispatch()
 
-  function acceptOrder(id){
-    console.log(id)
-
+  function acceptOrder(name, customer, price, quantity, id){
+    console.log(price * quantity)
+    console.log(name)
+    console.log(customer)
+    fetch('https://farmart-api.onrender.com/transactions',{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+        "Authorization": `Bearer ${localStorage.getItem("TOKEN")}`
+      },
+      body:JSON.stringify({
+        "animal_name": name,
+        "customer_name": customer,
+        "total_price":price * quantity
+      })
+    })
+    .then((r)=>r.json())
+    .then((data)=>{
+      rejectOrder(id)
+      console.log(data)
+    })
   }
 
   function rejectOrder(id){
@@ -50,12 +68,10 @@ function OrdersItem({orders}) {
                     <div className="card-body">
                         <h5 className="card-title">Animal Name: <span className='text-primary'>{orders.animal.name}</span></h5>
                         <h6 className="card-title">quantity required: <span className='text-primary'>{orders.quantity}</span></h6>
-                      <button onClick={() => acceptOrder(orders.id)} className='btn text-success ms-auto bg-white' >accept</button>
+                      <button onClick={() => acceptOrder(orders.animal.name, orders.user.username,  orders.animal.price, orders.quantity, orders.id)} className='btn text-success ms-auto bg-white' >accept</button>
                       <button onClick={() => rejectOrder(orders.id)} className='text-danger btn bg-white'>reject</button>
                     </div>
                   </div>
-
-
                 </div>
             </div>
 
