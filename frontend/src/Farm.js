@@ -29,7 +29,7 @@ function Farm() {
         <div className='card'>
           <div className='card-body'>
             <h2>Transactions</h2>
-            <table className="table mt-2" striped bordered hover>
+            <table className="table mt-2">
               <thead>
                 <tr className='bg-dark'>
                   <th className='text-white'>Id</th>

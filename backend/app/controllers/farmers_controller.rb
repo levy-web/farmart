@@ -1,5 +1,6 @@
 class FarmersController < ApplicationController
   before_action :set_farmer, only: %i[ show update destroy ]
+  before_action :verify_auth, only: %i[update, show]
 
   # GET /farmers
   def index
@@ -10,7 +11,11 @@ class FarmersController < ApplicationController
 
   # GET /farmers/1
   def show
+    if @user[:user_type] == "farmer"
     render json: @farmer
+      else
+        app_response(message:"failed", data:{info:{error:"register as a farmer"}}, status: :unprocessable_entity)
+    end
   end
 
   # POST /farmers

@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 // import { useDispatch, useSelector } from "react-redux";
 // import { addAnimal } from '../redux/farmerAnimals/FarmerAnimalsActions';
 import FarmerNav from './FarmerNav';
+import { Link, useNavigate } from "react-router-dom";
+
 
 function AddSell() {
   const [name, setName] = useState('')
@@ -12,6 +14,8 @@ function AddSell() {
   const [age, setAge] = useState('')
   const [category, setCategory] = useState('')
   const [image, setImage] = useState(null)
+  const navigate = useNavigate()
+
   // const dispatch = useDispatch()
 
   function nameChange(e){
@@ -91,6 +95,7 @@ function AddSell() {
      .then((r)=>r.json())
      .then((data)=>{
       console.log(data)
+      navigate("/farm/for_sale")
     })
 
   }
