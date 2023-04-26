@@ -75,10 +75,15 @@ const Animals = () => {
     const updatedList = data.filter((item) => item.animal_type === cat);
     setFilter(updatedList);
   }
+  const filterAnimalByAge = (age) => {
+    const updatedList = data.filter((item) => item.age < age);
+    setFilter(updatedList);
+  }
   const ShowAnimals = () => {
     return (
       <>
         <div className="buttons text-center py-5">
+          <p>filter by animal animal_type</p>
           <button className="btn btn-outline-dark btn-sm m-2" onClick={() => setFilter(data)}>All</button>
           <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterAnimal("Cow")}>Cows</button>
           <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterAnimal("Horse")}>
@@ -86,6 +91,15 @@ const Animals = () => {
           </button>
           <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterAnimal("Goat")}>Goats</button>
           <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterAnimal("Sheep")}>Sheep</button>
+
+          <p>filter by animal age</p>
+          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterAnimalByAge(1)}>{`< 1`}</button>
+          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterAnimalByAge(2)}>
+          {`< 2`}
+          </button>
+          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterAnimalByAge(3)}>{`< 3`}</button>
+          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterAnimalByAge(4)}>{`< 4`}</button>
+          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterAnimalByAge(5)}>{`< 5`}</button>
         </div>
 
         {filter.map((animal) => {
@@ -107,7 +121,7 @@ const Animals = () => {
                   </p>
                 </div>
                 <ul className="list-group list-group-flush">
-                  <li className="list-group-item lead">$ {animal.price}</li>
+                  <li className="list-group-item lead">ksh {animal.price}</li>
                 </ul>
                 <div className="card-body">
                   <Link to={"/Animal/" + animal.name} className="btn btn-dark m-1">

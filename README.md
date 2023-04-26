@@ -72,6 +72,10 @@ To run the application, you can use the following steps:
       
 ### Back-end
 
+
+<img width="1440" alt="Screenshot 2023-04-24 at 14 58 31" src="https://user-images.githubusercontent.com/85391012/233991011-c9a843f6-d95a-4e1f-8863-a719df79d8ba.png">
+
+
 - To navigate to the back-end folder, you need to move to the repository folder by using this command:
 
         cd ..

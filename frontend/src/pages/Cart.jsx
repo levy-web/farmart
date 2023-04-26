@@ -23,6 +23,26 @@ const Cart = () => {
     );
   };
 
+  function handleSubmit(){
+    state.map((item) => {
+      fetch('https://farmart-api.onrender.com/carts',{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json",
+          "Authorization": `Bearer ${localStorage.getItem("TOKEN")}`
+        },
+        body:JSON.stringify({
+          "animal_id": item.id,
+          "quantity": item.qty,
+          "price": item.price
+        })
+      })
+      .then((r)=>r.json())
+      .then((data)=>console.log(data))
+    })
+  }
+  console.log(state)
+
   const addItem = (animal) => {
     dispatch(addCart(animal));
   };
@@ -62,7 +82,7 @@ const Cart = () => {
                                 data-mdb-ripple-color="light"
                               >
                                 <img
-                                  src={item.image}
+                                  src={item.image_url}
                                   alt={item.name}
                                   width={100}
                                   height={75}
@@ -105,7 +125,7 @@ const Cart = () => {
                               <p className="text-start text-md-center">
                                 <strong>
                                   <span className="text-muted">{item.qty}</span>{" "}
-                                  x ${item.price}
+                                  x ksh{item.price}
                                 </strong>
                               </p>
                             </div>
@@ -126,25 +146,26 @@ const Cart = () => {
                   <div className="card-body">
                     <ul className="list-group list-group-flush">
                       <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                        Animals ({totalItems})<span>${Math.round(subtotal)}</span>
+                        Animals ({totalItems})<span>ksh{Math.round(subtotal)}</span>
                       </li>
                       <li className="list-group-item d-flex justify-content-between align-items-center px-0">
                         Shipping
-                        <span>${shipping}</span>
+                        <span>ksh{shipping}</span>
                       </li>
                       <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
                         <div>
                           <strong>Total amount</strong>
                         </div>
                         <span>
-                          <strong>${Math.round(subtotal + shipping)}</strong>
+                          <strong>ksh{Math.round(subtotal + shipping)}</strong>
                         </span>
                       </li>
                     </ul>
 
                     <Link
-                      to="/checkout"
+                      // to="/checkout"
                       className="btn btn-dark btn-lg btn-block"
+                      onClick={handleSubmit}
                     >
                       Go to checkout
                     </Link>
