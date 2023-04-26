@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import {useParams} from 'react-router-dom'
 import FarmerNav from '../FarmerNav'
+import { Link, useNavigate } from "react-router-dom";
+
 
 function AnimalUpdator() {
   const [animal, setAnimal] = useState('')
   const [updateWeight, setUpdateWeight]= useState('')
   const [updatePrice, setUpdatePrice]= useState('')
   const [updateAge, setUpdateAge] = useState('')
+  const navigate = useNavigate()
+
 
     const params = useParams()
 
@@ -24,6 +28,7 @@ function AnimalUpdator() {
           setUpdatePrice(data.price)
           setUpdateWeight(data.weight)
           console.log(data)
+          
         })
     }, [])
 
@@ -38,14 +43,16 @@ function AnimalUpdator() {
         },
       })
       .then((r)=>r.json())
-      .then((data)=>console.log(data))
+      .then((data)=>{
+        console.log(data)
+        navigate("/farm/for_sale")
+      })
 
     }
 
     function handleUpdate(){
 
       const formData = {
-        name:updateWeight,
         age:updateAge,
         price:updatePrice,
         weight: updateWeight
@@ -60,7 +67,10 @@ function AnimalUpdator() {
         body:JSON.stringify(formData)
       })
       .then((r)=>r.json())
-      .then((data)=>console.log(data))
+      .then((data)=>{
+        console.log(data)
+        navigate("/farm/for_sale")
+      })
 
     }
 
