@@ -23,7 +23,7 @@ const Navbar = () => {
                     alt="FARMART"
                     />
                 </NavLink>
-                <NavLink to="/cart" type="button" className="btn navbar-toggler text-danger"><i className="fa fa-cart-shopping"></i> ({state.length}) </NavLink>
+                <NavLink to="/cart" type="button" className="btn navbar-toggler text-dark"><i className="fa fa-cart-shopping"></i> ({state.length}) </NavLink>
                     
                
                 <button className="navbar-toggler mx-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
