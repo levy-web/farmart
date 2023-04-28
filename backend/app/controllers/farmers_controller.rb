@@ -28,7 +28,7 @@ class FarmersController < ApplicationController
         render json: {message: "failed", data:{error:@farmer.errors.full_messages}}, status: :unprocessable_entity
       end
     else
-      render json: {message: "failed", data:{info:"password doesnt match confirm password"}}, status: :unprocessable_entity
+      render json: {message: "failed", data:{error: "password doesn't match confirm password"}}, status: :unprocessable_entity
     end
 
     
