@@ -14,7 +14,7 @@ class CartsController < ApplicationController
       render json: myOrders
       
       else
-        render json: {message:"failed"}, status: :Not_Authorized
+        render json: {message:"failed"}, status: :unauthorized
       end
     end
     # GET /carts/1
