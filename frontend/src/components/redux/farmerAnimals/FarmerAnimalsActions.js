@@ -7,7 +7,7 @@ export const addAnimal = ((animal)=>{
     }
 })
 
-export function fetchAnimals() {
+export function fetchAnimals(token) {
     return async function (dispatch) {
       dispatch({ type: LOAD_ANIMALS });
 
@@ -16,7 +16,7 @@ export function fetchAnimals() {
         const response = await fetch(`https://farmart-api.onrender.com/my-animals`, {
           method:"GET",
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("TOKEN")}`
+            Authorization: `Bearer ${token}`
           }
         })
         if (!response.ok) {

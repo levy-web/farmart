@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 // import { useDispatch, useSelector } from "react-redux";
 // import { addAnimal } from '../redux/farmerAnimals/FarmerAnimalsActions';
+import { useDispatch, useSelector } from "react-redux";
 import FarmerNav from './FarmerNav';
 import { Link, useNavigate } from "react-router-dom";
 
@@ -15,6 +16,7 @@ function AddSell() {
   const [category, setCategory] = useState('')
   const [image, setImage] = useState(null)
   const navigate = useNavigate()
+  const token = useSelector((state)=>state.farmer.token)
 
   // const dispatch = useDispatch()
 
@@ -87,7 +89,7 @@ function AddSell() {
      fetch('https://farmart-api.onrender.com/animals',{
       method: "POST",
       headers: {
-        Authorization: `Bearer ${localStorage.getItem("TOKEN")}`
+        Authorization: `Bearer ${token}`
       },
       body:data
 

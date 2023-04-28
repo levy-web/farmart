@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import {useParams} from 'react-router-dom'
 import FarmerNav from '../FarmerNav'
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
 
 
 function AnimalUpdator() {
@@ -10,6 +12,7 @@ function AnimalUpdator() {
   const [updatePrice, setUpdatePrice]= useState('')
   const [updateAge, setUpdateAge] = useState('')
   const navigate = useNavigate()
+  const token = useSelector((state)=>state.farmer.token)
 
 
     const params = useParams()
@@ -18,7 +21,7 @@ function AnimalUpdator() {
     useEffect(()=>{
         fetch(`https://farmart-api.onrender.com/animals/${params.animalsName}`,{
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("TOKEN")}`
+            Authorization: `Bearer ${token}`
           },
         })
         .then((r)=>r.json())
@@ -39,7 +42,7 @@ function AnimalUpdator() {
       fetch(`https://farmart-api.onrender.com/animals/${params.animalsName}`,{
         method:"DELETE",
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("TOKEN")}`
+          Authorization: `Bearer ${token}`
         },
       })
       .then((r)=>r.json())
@@ -62,7 +65,7 @@ function AnimalUpdator() {
         method:"PUT",
         headers:{
           "Content-Type":"application/json",
-          "Authorization": `Bearer ${localStorage.getItem("TOKEN")}`
+          "Authorization": `Bearer ${token}`
         },
         body:JSON.stringify(formData)
       })

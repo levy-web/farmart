@@ -2,9 +2,11 @@ import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { rejectAnimal } from '../../redux/order/OrderAction';
 
+
 function OrdersItem({orders}) {
 
   const order = useSelector((state) => state.orders.orders);
+  const token = useSelector((state)=>state.farmer.token)
   const dispatch = useDispatch()
 
   function acceptOrder(name, customer, price, quantity, id){
@@ -15,7 +17,7 @@ function OrdersItem({orders}) {
       method:"POST",
       headers:{
         "Content-Type":"application/json",
-        "Authorization": `Bearer ${localStorage.getItem("TOKEN")}`
+        "Authorization": `Bearer ${token}`
       },
       body:JSON.stringify({
         "animal_name": name,
@@ -33,7 +35,7 @@ function OrdersItem({orders}) {
   function rejectOrder(id){
     fetch(`https://farmart-api.onrender.com/carts/${id}`,{
       method:"DELETE",
-      headers:{Authorization: `Bearer ${localStorage.getItem("TOKEN")}`}
+      headers:{Authorization: `Bearer ${token}`}
     })
     .then((r)=>r.json())
     .then((data)=>{

@@ -4,8 +4,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { addCart, delCart } from "../redux/action";
 import { Link } from "react-router-dom";
 
+
 const Cart = () => {
   const state = useSelector((state) => state.handleCart);
+  const token = useSelector((state)=>state.user.token)
   const dispatch = useDispatch();
 
   const EmptyCart = () => {
@@ -29,7 +31,7 @@ const Cart = () => {
         method:"POST",
         headers:{
           "Content-Type":"application/json",
-          "Authorization": `Bearer ${localStorage.getItem("TOKEN")}`
+          "Authorization": `Bearer ${token}`
         },
         body:JSON.stringify({
           "animal_id": item.id,

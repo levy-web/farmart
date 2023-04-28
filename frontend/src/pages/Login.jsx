@@ -12,23 +12,23 @@ const Login = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const user = useSelector((state) => state.user.buyer);
+  const buyer = useSelector((state) => state.user.buyer);
   const isLoading = useSelector((state) => state.user.isLoading);
   const error = useSelector((state) => state.user.error);
   const token = useSelector((state)=>state.user.token)
 
-  localStorage.setItem("TOKEN", token)
+  console.log(token)
   
-  console.log(user)
+  console.log(buyer)
   console.log(isLoading)
   console.log(error)
 
   useEffect(()=>{
-    if (user){
+    if (buyer){
       navigate("/")
     }
 
-  },[user])
+  },[buyer])
   
 
   const handleEmailChange = (e) => setEmail(e.target.value);
@@ -51,7 +51,7 @@ const Login = () => {
         <h1 className="text-center">Log In</h1>
         <hr />
         {error && <h6 className="text-danger text-center">{error}</h6>}
-        {user && <h6 className="text-success text-center">{user.message}</h6>}
+        {buyer && <h6 className="text-success text-center">{buyer.message}</h6>}
         <div className="row my-4 h-100">
 
           <div className="col-md-4 col-lg-4 col-sm-8 mx-auto">

@@ -2,9 +2,11 @@ import { REMOVE_USER, LOGIN_USER, LOAD_USERS, LOGIN_USER_ERROR } from "./UserTyp
 
 const initialState = {
     isLoading: false,
+    isLoggedIn: false,
     buyer: null,
     error: '',
-    navigate: false
+    navigate: false,
+    token:null
 }
 
 
@@ -18,10 +20,17 @@ const userSlice = (state=initialState, action)=>{
         case LOGIN_USER: return {
             ...state,
             isLoading: false,
+            isLoggedIn: true,
             buyer: action.payload,
             token: action.payload.data.token,
             navigate: true,
             error: ""
+        }
+        case REMOVE_USER: return {
+            ...state,
+            buyer: null,
+            isLoggedIn:false,
+            token:null
         }
         case LOGIN_USER_ERROR: return {
             ...state,

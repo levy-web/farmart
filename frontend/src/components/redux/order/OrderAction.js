@@ -8,13 +8,13 @@ export const rejectAnimal = ((id)=>{
 })
 
 
-export function fetchOrders() {
+export function fetchOrders(token) {
     return function (dispatch) {
       dispatch({ type: LOAD_ORDERS });
       fetch("https://farmart-api.onrender.com/carts",{
         method: "GET",
         headers: {
-            Authorization: `Bearer ${localStorage.getItem("TOKEN")}`
+            Authorization: `Bearer ${token}`
           }
       })
         .then((response) => response.json())

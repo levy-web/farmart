@@ -2,7 +2,8 @@ import React from 'react'
 import Farm from './Farm'
 import { Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import store from './components/redux/Store';
+import store, {persistor} from './components/redux/Store';
+import { PersistGate } from 'redux-persist/integration/react';
 import { Home,Animal, Animals, AboutPage, ContactPage, Cart, Login, Register, Checkout, PageNotFound } from "./pages"
 import {MyAnimals, AnimalUpdator} from './components/farmer/myAnimals'
 import { Orders } from './components/farmer/Orders'
@@ -19,6 +20,7 @@ function App() {
 
   return (
     <Provider store={store}>
+      <PersistGate persistor={persistor}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/animal" element={<Animals />} />
@@ -42,7 +44,8 @@ function App() {
         <Route path="*" element={<PageNotFound />} />
         <Route path="/animal/*" element={<PageNotFound />} />
       </Routes>
-      
+
+      </PersistGate>      
     </Provider>  )
 }
 
