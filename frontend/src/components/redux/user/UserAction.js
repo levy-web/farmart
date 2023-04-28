@@ -1,3 +1,4 @@
+import {toast} from 'react-hot-toast'
 import { REMOVE_USER, LOGIN_USER, LOAD_USERS, LOGIN_USER_ERROR } from "./UserType";
 
 
@@ -23,6 +24,7 @@ export function loginUser(email, password) {
             type: LOGIN_USER_ERROR,
             payload: 'Network response was not ok'
           })
+
         }
         const data = await response.json();
         if (data.status !== "ok") {
@@ -30,12 +32,14 @@ export function loginUser(email, password) {
             type: LOGIN_USER_ERROR,
             payload: data.data.error
           })
+          toast.error(data.data.error)
           
         }else{
           dispatch({
             type: LOGIN_USER,
             payload: data
           })
+          toast.success(`${data.message}`);
           
         }
 

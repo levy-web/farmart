@@ -13,6 +13,7 @@ import ProtectedRoute from './ProtectedRoutes';
 import FarmerLogin from './components/farmer/Login';
 import FarmerRegister from './components/farmer/Register';
 import FarmersProtectedRoute from './FarmersProtectedRoutes';
+import {Toaster} from 'react-hot-toast';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
+      <Toaster position="top-center" reverseOrder={false}/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/animal" element={<Animals />} />

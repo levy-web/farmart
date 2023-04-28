@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import FarmerNav from './FarmerNav';
 import { Link, useNavigate } from "react-router-dom";
-
+import { toast } from 'react-hot-toast';
 
 function AddSell() {
   const [name, setName] = useState('')
@@ -97,6 +97,7 @@ function AddSell() {
      .then((r)=>r.json())
      .then((data)=>{
       console.log(data)
+      toast.success("succesfully added to your animals")
       navigate("/farm/for_sale")
     })
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addCart } from "../redux/action";
+import {toast} from 'react-hot-toast'
 
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -18,6 +19,7 @@ const Animals = () => {
 
   const addAnimal = (animal) => {
     dispatch(addCart(animal))
+    toast.success(`1 ${animal.name} added to the cart.`);
   }
 
   useEffect(() => {

@@ -13,15 +13,7 @@ const FarmerLogin = () => {
   const navigate = useNavigate()
 
   const user = useSelector((state) => state.farmer.farmer);
-  const isLoading = useSelector((state) => state.farmer.isLoading);
-  const error = useSelector((state) => state.farmer.error);
-  const token = useSelector((state)=>state.farmer.token)
-
-  
-  
-  console.log(user)
-  console.log(isLoading)
-  console.log(token)
+  const isLoading = useSelector((state) => state.farmer.isLoading);  
 
   useEffect(()=>{
     if (user){
@@ -50,8 +42,6 @@ const FarmerLogin = () => {
       <div className="container my-3 py-3">
         <h1 className="text-center">Log In</h1>
         <hr />
-        {error && <h6 className="text-danger text-center">{error}</h6>}
-        {user && <h6 className="text-success text-center">{user.message}</h6>}
         <div className="row my-4 h-100">
           <div className="col-md-4 col-lg-4 col-sm-8 mx-auto">
             <form onSubmit={handleSubmit}>

@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import Marquee from "react-fast-marquee";
 import { useDispatch } from "react-redux";
 import { addCart } from "../redux/action";
+import {toast} from 'react-hot-toast'
 
 import { Footer, Navbar } from "../components";
 
@@ -18,6 +19,7 @@ const Animal = () => {
 
   const addAnimal = (animal) => {
     dispatch(addCart(animal));
+    toast.success(`1 ${animal.name} added to the cart.`);
   };
 
   useEffect(() => {
@@ -90,7 +92,7 @@ const Animal = () => {
                 {animal.rating && animal.rating.rate}{" "}
                 <i className="fa fa-star"></i>
               </p>
-              <h3 className="display-6  my-4">${animal.price}</h3>
+              <h3 className="display-6  my-4">ksh {animal.price}</h3>
               <p className="lead">{animal.breed}</p>
               <button
                 className="btn btn-outline-dark"

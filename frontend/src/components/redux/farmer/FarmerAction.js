@@ -1,3 +1,4 @@
+import {toast} from 'react-hot-toast'
 import { REMOVE_FARMER, LOGIN_FARMER, LOAD_FARMER, LOGIN_FARMER_ERROR } from "./FarmerType";
 
 
@@ -30,12 +31,14 @@ export function loginFarmer(email, password) {
             type: LOGIN_FARMER_ERROR,
             payload: data.data.error
           })
+          toast.error(data.data.error)
           
         }else{
           dispatch({
             type: LOGIN_FARMER,
             payload: data
           })
+          toast.success(`${data.message}`);
           
         }
 
@@ -50,4 +53,5 @@ export const logoutFarmer = (()=>{
   return{
       type: REMOVE_FARMER
   }
+  
 })

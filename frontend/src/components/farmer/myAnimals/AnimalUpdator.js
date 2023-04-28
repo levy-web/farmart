@@ -3,6 +3,7 @@ import {useParams} from 'react-router-dom'
 import FarmerNav from '../FarmerNav'
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from 'react-hot-toast';
 
 
 
@@ -48,6 +49,7 @@ function AnimalUpdator() {
       .then((r)=>r.json())
       .then((data)=>{
         console.log(data)
+        toast.success(`${data.name} deleted succesfully`)
         navigate("/farm/for_sale")
       })
 
@@ -72,6 +74,7 @@ function AnimalUpdator() {
       .then((r)=>r.json())
       .then((data)=>{
         console.log(data)
+        toast.success(`${data.name} updated succesfully`)
         navigate("/farm/for_sale")
       })
 

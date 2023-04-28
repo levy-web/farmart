@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Footer, Navbar } from "../../components";
 import { json, Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 
 const FarmerRegister = () => {
 
@@ -34,9 +35,13 @@ const FarmerRegister = () => {
     .then((r)=>r.json())
     .then((data)=>{
       if(data.status === 'ok'){
-      console.log(data)
-      }else setError(data.data.error)
-      // navigate('/login')
+      toast.success(data.message)
+      navigate('/login')
+      }else {
+        setError(data.data.error)        
+          toast.error(data.data.error)        
+      }
+      
     })
   }
 
@@ -46,7 +51,6 @@ const FarmerRegister = () => {
   return (
     <>
       <Navbar />
-      {error && <div className='text-danger'>{error}</div>}
       <div className="container my-3 py-3">
         <div className="row my-4 h-100">
           <div className="col-md-7 col-lg-7 col-sm-8 mx-auto">
