@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import Dropdown from 'react-bootstrap/Dropdown';
 import { logoutUser } from './redux/user/UserAction';
+import { toast } from 'react-hot-toast';
 
 
 
@@ -82,7 +83,10 @@ const Navbar = () => {
 
                     { isUserLoggedIn &&
                     <div className="buttons text-center">
-                        <NavLink onClick={()=>{dispatch(logoutUser())}} to="/login" className="btn btn-outline-dark m-2"><i className="fa fa-sign-in-alt mr-1"></i> Logout</NavLink>
+                        <NavLink onClick={()=>{
+                            dispatch(logoutUser())
+                            toast.success("logged out succesfully")
+                            }} to="/login" className="btn btn-outline-dark m-2"><i className="fa fa-sign-out-alt mr-1"></i> Logout</NavLink>
 
                         <NavLink to="/cart" className="btn btn-outline-dark m-2"><i className="fa fa-cart-shopping mr-1"></i> Cart ({state.length}) </NavLink>
                     </div>}

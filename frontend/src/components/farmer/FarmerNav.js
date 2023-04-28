@@ -1,5 +1,6 @@
 import React from 'react'
 import {NavLink} from "react-router-dom"
+import { toast } from 'react-hot-toast';
 import { useSelector } from 'react-redux'
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useDispatch } from "react-redux";
@@ -70,7 +71,10 @@ function FarmerNav() {
 
             { isLoggedIn &&
             <div className="buttons text-center">
-                <NavLink onClick={()=>{dispatch(logoutFarmer())}} to="/farmer-login" className="btn btn-outline-dark m-2"><i className="fa fa-sign-in-alt mr-1"></i> Logout</NavLink>
+                <NavLink onClick={()=>{
+                    dispatch(logoutFarmer()) 
+                    toast.success("logged out succesfully")
+                    }} to="/farmer-login" className="btn btn-outline-dark m-2"><i className="fa fa-sign-out-alt mr-1"></i> Logout</NavLink>
             </div>}
 
       </div>

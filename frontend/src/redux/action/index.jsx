@@ -1,9 +1,11 @@
+
 // For Add Item to Cart
 export const addCart = (animal) =>{
     return {
         type:"ADDITEM",
         payload:animal
     }
+    
 }
 
 // For Delete Item to Cart

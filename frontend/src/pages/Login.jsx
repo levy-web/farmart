@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../components/redux/user/UserAction";
 import { Footer, Navbar } from "../components";
+import {toast} from 'react-hot-toast'
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -14,14 +15,7 @@ const Login = () => {
 
   const buyer = useSelector((state) => state.user.buyer);
   const isLoading = useSelector((state) => state.user.isLoading);
-  const error = useSelector((state) => state.user.error);
-  const token = useSelector((state)=>state.user.token)
 
-  console.log(token)
-  
-  console.log(buyer)
-  console.log(isLoading)
-  console.log(error)
 
   useEffect(()=>{
     if (buyer){
@@ -50,8 +44,6 @@ const Login = () => {
       <div className="container my-3 py-3">
         <h1 className="text-center">Log In</h1>
         <hr />
-        {error && <h6 className="text-danger text-center">{error}</h6>}
-        {buyer && <h6 className="text-success text-center">{buyer.message}</h6>}
         <div className="row my-4 h-100">
 
           <div className="col-md-4 col-lg-4 col-sm-8 mx-auto">
