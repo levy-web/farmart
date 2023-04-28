@@ -5,9 +5,9 @@ import { useSelector } from "react-redux";
 
 const FarmersProtectedRoute = ({children}) => {
     
-    const user = useSelector((state)=>state.farmer.farmer)
+    const farmer = useSelector((state)=>state.farmer.farmer)
 
-    if (!user){
+    if (!farmer){
         return <Navigate to='/farmer-login'/>
     }
     return children

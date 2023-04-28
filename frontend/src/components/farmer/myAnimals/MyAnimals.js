@@ -9,10 +9,11 @@ function MyAnimals() {
     
     const status = useSelector((state) => state.myAnimals.status);
     const animals = useSelector((state) => state.myAnimals.myAnimals);
+    const token = useSelector((state)=>state.farmer.token)
     const dispatch = useDispatch()
 
     useEffect(()=>{
-      dispatch(fetchAnimals())
+      dispatch(fetchAnimals(token))
     }, [])
     
 

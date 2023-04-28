@@ -1,11 +1,18 @@
 import Orders from './components/farmer/Orders/Orders';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
 import FarmerNav from './components/farmer/FarmerNav';
+import { logoutFarmer } from './components/redux/farmer/FarmerAction';
 
 
 function Farm() {
   const [orders, setOrders] = useState([]);
+  const dispatch = useDispatch()
+
+  const token = useSelector((state)=>state.farmer.token)
+  console.log(token)
+
   console.log(orders)
 
   useEffect(()=>{
@@ -13,11 +20,20 @@ function Farm() {
       method:"GET",
       headers:{
         "Content-Type":"application/json",
-        "Authorization": `Bearer ${localStorage.getItem("TOKEN")}`
+        "Authorization": `Bearer ${token}`
       }
     })
     .then((r)=>r.json())
-    .then((data)=>setOrders(data))
+    .then((data)=>{
+      if (data.status === "ok"){
+        setOrders(data.data.transactions)
+      }else if(data.data.status === "unauthorized"){
+        console.log(data)
+        dispatch(logoutFarmer())
+      }else{
+        console.log(data)
+      }      
+    })
   },[])
 
   return (

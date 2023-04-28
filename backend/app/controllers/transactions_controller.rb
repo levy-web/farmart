@@ -3,9 +3,12 @@ class TransactionsController < ApplicationController
     before_action :verify_auth, only: %i[myAnimals index create destroy update]
 
     def index
-        transaction = Transaction.where("farmer_id=?", @user[:uid])
-
-        render json: transaction
+        if @user[:user_type] == "farmer"
+            transaction = Transaction.where("farmer_id=?", @user[:uid])
+            render json: {message:"successful", data: {"transactions":transaction}, status: :ok}, status: :ok
+        else
+            app_response(message:"failed", data:{info:{error:"register as a farmer"},status: :unauthorized},status: :unauthorized)
+        end
     end
 
     def create

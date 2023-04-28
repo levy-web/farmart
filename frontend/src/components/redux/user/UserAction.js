@@ -48,4 +48,10 @@ export function loginUser(email, password) {
 
 }
 
+export const logoutUser = (()=>{
+  return{
+      type: REMOVE_USER
+  }
+})
+
 

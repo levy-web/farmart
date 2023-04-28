@@ -5,9 +5,9 @@ import { useSelector } from "react-redux";
 
 const ProtectedRoute = ({children}) => {
     
-    const user = useSelector((state)=>state.user.buyer)
+    const buyer = useSelector((state)=>state.user.buyer)
 
-    if (!user){
+    if (!buyer){
         return <Navigate to='/login'/>
     }
     return children

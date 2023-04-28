@@ -10,10 +10,11 @@ function Orders() {
 
     const status = useSelector((state) => state.orders.status);
     const orders = useSelector((state) => state.orders.orders);
+    const token = useSelector((state)=>state.farmer.token)
     const dispatch = useDispatch()
 
     useEffect(()=>{
-      dispatch(fetchOrders())
+      dispatch(fetchOrders(token))
 
     }, [])
     console.log(orders)

@@ -16,16 +16,17 @@ class AnimalsController < ApplicationController
   end
 
   def myAnimals
-    @newArr = []
+    
     if @user[:user_type] == "farmer"
+      @newArr = []
       
       @animals = Animal.where("farmer_id=?", @user[:uid] )
       for value in @animals do
         @newArr << AnimalSerializer.new(value).serializable_hash[:data][:attributes]         
       end
       render json: {message:"succesfull", data:@newArr, status: :ok}
-      else
-        app_response(message:"failed", data:{info:{error:"register as a farmer"}}, status: :unprocessable_entity)
+    else
+        app_response(message:"failed", data:{info:{error:"register as a farmer"}}, status: :unauthorized)
     end
   end
 

@@ -14,7 +14,7 @@ useEffect(()=>{
     fetch(`https://farmart-api.onrender.com/farmers/${user.data.user.id}`,{
         method: "GET",
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("TOKEN")}`
+          Authorization: `Bearer ${token}`
         }
     })
     .then((r)=>r.json())

@@ -1,7 +1,14 @@
 import React from 'react'
 import {NavLink} from "react-router-dom"
+import { useSelector } from 'react-redux'
+import Dropdown from 'react-bootstrap/Dropdown';
+import { useDispatch } from "react-redux";
+import { logoutFarmer } from '../redux/farmer/FarmerAction';
 
 function FarmerNav() {
+    const isLoggedIn = useSelector((state) => state.farmer.isLoggedIn);
+    const dispatch = useDispatch()
+    console.log(isLoggedIn)
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light py-3 sticky-top">
       <div className='container'>
@@ -59,13 +66,13 @@ function FarmerNav() {
                 </NavLink>
             </li>
             </ul>
-            <ul className="navbar-nav p-3 m-auto my-2 text-center">
-            <li className="nav-item">
-                <NavLink className="nav-link" to='/login'>
-                Logout
-                </NavLink>
-            </li>
-          </ul>
+
+
+            { isLoggedIn &&
+            <div className="buttons text-center">
+                <NavLink onClick={()=>{dispatch(logoutFarmer())}} to="/farmer-login" className="btn btn-outline-dark m-2"><i className="fa fa-sign-in-alt mr-1"></i> Logout</NavLink>
+            </div>}
+
       </div>
       </div>
     </nav>

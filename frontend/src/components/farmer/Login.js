@@ -17,7 +17,7 @@ const FarmerLogin = () => {
   const error = useSelector((state) => state.farmer.error);
   const token = useSelector((state)=>state.farmer.token)
 
-  localStorage.setItem("TOKEN", token)
+  
   
   console.log(user)
   console.log(isLoading)

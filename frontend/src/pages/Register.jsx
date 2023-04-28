@@ -30,10 +30,8 @@ const Register = () => {
     .then((r)=>r.json())
     .then((data)=>{
       console.log(data)
-      navigate('/login')
-      
+      navigate('/login')      
     })
-
   }
 
 

@@ -45,3 +45,9 @@ export function loginFarmer(email, password) {
       
     };
 }
+
+export const logoutFarmer = (()=>{
+  return{
+      type: REMOVE_FARMER
+  }
+})
