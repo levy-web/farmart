@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import OrdersItem from './OrdersItem'
+import { Link } from 'react-router-dom';
 import Skeleton from "react-loading-skeleton";
 import {useDispatch, useSelector} from 'react-redux'
 import { fetchOrders } from '../../redux/order/OrderAction'
@@ -18,6 +19,17 @@ function Orders() {
 
     }, [])
     console.log(orders)
+    const EmptyOrders = () => {
+      return (
+        <div className="container mt-2">
+          <div className="row">
+            <div className="col-md-12 py-5 bg-light text-center">
+              <h4 className="p-3 display-5">You have {orders.length} Orders</h4>
+            </div>
+          </div>
+        </div>
+      );
+    };
 
     const orderItems = orders.map((order)=><OrdersItem key={order.id} orders={order} />)
 
@@ -30,10 +42,6 @@ function Orders() {
     {status && 
       <div className="row">
         
-        <div className="col-12 py-5 text-center">
-          <h2 className="text-center">loading ...</h2>
-          <Skeleton height={40} width={560} />
-        </div>
         <div className="col-md-4 col-sm-6 col-xs-8 col-12 mb-4">
           <Skeleton  height={200}/>
         </div>
@@ -54,7 +62,7 @@ function Orders() {
         </div>
       </div>
       }
-        {orderItems}
+        {orders.length > 0 ? {orderItems} : <EmptyOrders />}
     </div>
     </>
   )
