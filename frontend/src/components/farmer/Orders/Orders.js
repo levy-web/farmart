@@ -33,6 +33,14 @@ function Orders() {
 
     const orderItems = orders.map((order)=><OrdersItem key={order.id} orders={order} />)
 
+    const ShowOrders = () => {
+      return(
+        <div className='container p-2'>
+        {orderItems}
+        </div>
+      )
+    }
+
 
 
   return (
@@ -62,8 +70,9 @@ function Orders() {
         </div>
       </div>
       }
-        {orders.length > 0 ? {orderItems} : <EmptyOrders />}
+        
     </div>
+    {orders.length > 0 ? <ShowOrders /> : <EmptyOrders />}
     </>
   )
 }

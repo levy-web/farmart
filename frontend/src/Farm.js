@@ -31,7 +31,7 @@ function Farm() {
   };
 
 
-  const showTransactions = () => {
+  const ShowTransactions = () => {
     return (
       <div className='container'>
     <div className='row'>
@@ -109,7 +109,7 @@ function Farm() {
   return (
     <>
       <FarmerNav/>
-      {orders.length > 0 ? <showTransactions /> : <EmptTransactions />}    
+      {orders.length > 0 ? <ShowTransactions /> : <EmptTransactions />}    
     </>
   );
 }
