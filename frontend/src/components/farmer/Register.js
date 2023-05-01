@@ -38,7 +38,7 @@ const FarmerRegister = () => {
       toast.success(data.message)
       navigate('/login')
       }else {
-        setError(data.data.error)        
+        setError(data.data.error)     
           toast.error(data.data.error)        
       }
       

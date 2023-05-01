@@ -111,7 +111,7 @@ const Animals = () => {
                 <img
                   className="card-img-top p-3"
                   src={animal.image_url}
-                  alt="Card"
+                  alt={animal.name}
                   height={300}
                 />
                 <div className="card-body">

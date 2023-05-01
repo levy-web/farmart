@@ -13,7 +13,7 @@ const FarmerLogin = () => {
   const navigate = useNavigate()
 
   const user = useSelector((state) => state.farmer.farmer);
-  const isLoading = useSelector((state) => state.farmer.isLoading);  
+  const isLoading = useSelector((state) => state.farmer.isLoading);
 
   useEffect(()=>{
     if (user){
