@@ -21,13 +21,8 @@ export function fetchOrders(token) {
       })
         .then((response) => response.json())
         .then((data) =>{
-          if (data.status === "ok") {
-            console.log(data)
-            dispatch({
-              type: FETCH_ORDERS,
-              payload: data
-            })}
-          else if(data.data.info === "Signature has expired"){
+
+          if(data.data.info === "Signature has expired"){
             dispatch({
               type: FETCH_ERROR,
               payload: "token expired, login"
@@ -46,6 +41,10 @@ export function fetchOrders(token) {
                    
           }else{
             console.log(data)
+            dispatch({
+              type: FETCH_ORDERS,
+              payload: data
+            })
           }
 
         })

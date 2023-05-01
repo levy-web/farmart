@@ -11,7 +11,7 @@ class CartsController < ApplicationController
           myOrders << item
         end        
       end
-      render json: myOrders, status: :ok
+      render json: myOrders
       
       else
         app_response(message:"failed", data:{info:{error:"register as a farmer"}}, status: :unauthorized)      end
