@@ -17,7 +17,7 @@ class ApplicationController < ActionController::API
                 email: email,
                 user: user #add user type to payload
             },
-            exp: Time.now.to_i + (6*3600)
+            exp: Time.now.to_i + (0.5*3600)
         }
         JWT.encode(payload, ENV['farmart_key'], 'HS256')
     end

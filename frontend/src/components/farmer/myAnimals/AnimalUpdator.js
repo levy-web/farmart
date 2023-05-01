@@ -83,17 +83,18 @@ function AnimalUpdator() {
   return (
     <>
     <FarmerNav/>
-    <div className='container p-2'>
-      <div className="card mt-3" >
-        <div className="row g-0">
-          <div className="col-md-6">
-            <img src={animal.image_url} className="img-fluid rounded-start" alt={animal.name}></img>
+    <div className='container my-5 py-2'>
+        <div className="row">
+          
+          <div className="col-md-6 col-sm-12 py-3">
+            <img src={animal.image_url} className="img-fluid" alt={animal.name}></img>
           </div>
-          <div className="col-md-6">
-            <div className="card-body">
-            <label htmlFor="InputName" className="form-label text-capitalize fs-6 fw-bold fst-italic">{`Name: ${animal.name}`}</label><br/>
-              <label htmlFor="inputName" className="form-label text-capitalize fs-6 fw-bold fst-italic">{`Type: ${animal.animal_type}`}</label><br/>
-              <label htmlFor="inputBreed" className="form-label text-capitalize fs-6 fw-bold fst-italic">{`Breed: ${animal.breed}`}</label><br/>   
+          <div className="col-md-6 col-md-6 py-5">
+              {/* <button onClick={handleDelete} className='form-control btn btn-danger ms-auto me-2 mb-2'>delete</button> */}
+              
+              <h4 className="text-uppercase text-muted">{animal.animal_type}</h4>
+              <h1 className="display-5">{animal.name}</h1>
+              <p className="lead">{animal.breed}</p> 
         
 
               <label htmlFor="inputName" className="form-label text-capitalize fs-6 fw-bold fst-italic">Weight</label>         
@@ -104,15 +105,9 @@ function AnimalUpdator() {
           
               <label htmlFor="InputName" className="form-label text-capitalize fs-6 fw-bold fst-italic">Animal Age</label>
               <input onChange={(e) => setUpdateAge(e.target.value)} className='form-control' value={updateAge}/>
-              {/* <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p> */}
-            </div>
-          </div>
+              <button onClick={handleUpdate} className='form-control btn btn-success ms-auto me-2 mt-2'>update</button>
+              <button onClick={handleDelete} className='form-control btn btn-danger ms-auto me-2 mt-2'>delete</button>
         </div>
-        <span className='ms-auto me-2 mb-2'>
-          <button onClick={handleUpdate} className='text-success ms-auto me-2 mb-2'>save</button>
-          <button onClick={handleDelete} className='text-danger ms-auto me-2 mb-2'>delete</button>
-        </span>
       </div>      
     </div>
     </>

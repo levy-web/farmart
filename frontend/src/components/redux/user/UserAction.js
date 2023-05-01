@@ -45,6 +45,11 @@ export function loginUser(email, password) {
 
       }catch (error){
         console.error(error)
+        dispatch({
+          type: LOGIN_USER_ERROR,
+          payload: error
+        })
+        toast.error("Check your connection, Network response was not ok")
       }
       
     };

@@ -1,4 +1,4 @@
-import { ADD_ORDER, FETCH_ORDERS, LOAD_ORDERS, REJECT_ORDERS } from "./OrderType"
+import { ADD_ORDER, FETCH_ERROR, FETCH_ORDERS, LOAD_ORDERS, REJECT_ORDERS } from "./OrderType"
 
 const initialState = {
     status: false,
@@ -13,6 +13,12 @@ const orderSlice = (state=initialState, action)=>{
             ...state,
             status: true,
         };
+
+        case FETCH_ERROR: return {
+            ...state,
+            status: false,
+            error: ''
+        }
 
         case FETCH_ORDERS: return {
             ...state,

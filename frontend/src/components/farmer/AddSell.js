@@ -26,6 +26,7 @@ function AddSell() {
 
   function typeChange(e){
     setType(e.target.value)
+    console.log(e.target.value)
   }
 
   function weightChange(e){
@@ -107,33 +108,59 @@ function AddSell() {
   return (
     <>
     <FarmerNav/>
-    <div className='container mt-3 p-5'>
-      <h2 className='text-center mb-5'>Insert your new animal</h2>
-      <form onSubmit={handleSubmit} className="row m-auto g-3">
-        
-          <label htmlFor="inputName" className="col-sm-2 col-form-label">Name</label>
-          <input type="text" name='name' value={name} onChange={nameChange} className="form-control" id="staticEmail"></input>
-       
-          <label htmlFor="inputName" className="col-sm-2 col-form-label">Type</label>         
-          <input type="text" name='type' value={type} onChange={typeChange} className="form-control" id="staticEmail"></input>
+    <div className='container my-3 py-3'>
+      <div className="row my-4 h-100">
+        <div className="col-md-7 col-lg-8 col-sm-8 mx-auto">
+          <div className="card shadow p-5">
+            <h2 className='text-center mb-5'>Add new animal</h2>
+              <form onSubmit={handleSubmit}>
+                
+                  <div className="form-group mb-3"> 
+                    <input type="text" required name='name' placeholder="animal name" value={name} onChange={nameChange} className="form-control" id="staticEmail"></input>
+                  </div>
+                  <div className="form-group mb-3"> 
+                    <select required value={type} onChange={typeChange} className="form-control" aria-label="Default select example" >
+                      <option defaultValue>select animal type</option>
+                      <option defaultValue="Cow">Cow</option>
+                      <option value="Goat">Goat</option>
+                      <option value="Sheep">Sheep</option>
+                      <option value="Bird">Bird</option>
+                      <option value="Horse">Horse</option>
+                      <option value="Fish">Fish</option>
+                      <option value="Pig">Pig</option>
+                      <option value="Donkey">Donkey</option>
+                      <option value="Carmel">Carmel</option>
+                      <option value="Rabbit">Rabbit</option>
+                      <option value="Cat">Cat</option>
+                      <option value="Dog">Dog</option>
+                    </select>
+                  </div>
 
-          <label htmlFor="inputName" className="col-sm-2 col-form-label">Weight</label>         
-          <input type="number" name='weight' value={weight} onChange={weightChange} className="form-control" id="staticEmail"></input>
+                  <div className="form-group mb-3"> 
+                    <input required type="number" name='weight' placeholder="weight" value={weight} onChange={weightChange} className="form-control" id="staticEmail"></input>
+                  </div>
 
-          <label htmlFor="inputName" className="col-sm-2 col-form-label">Price</label>         
-          <input type="number" name='price' value={price} onChange={priceChange} className="form-control" id="staticEmail"></input>
-       
-          <label htmlFor="inputBreed" className="col-sm-3 col-form-label">Breed</label>          
-          <input type="text" name='breed' value={breed} onChange={breedChange} className="form-control" id="inputPassword"></input>
-              
-          <label htmlFor="inputAge" className="col-sm-3 col-form-label">Age</label>          
-          <input type="number" name='age' value={age} onChange={ageChange} className="form-control" id="inputPassword"></input>
-        
-          <label htmlFor="inputImage" className="col-sm-2 col-form-label">Image</label>          
-          <input onChange={imageChange} className="form-control" type="file" id="formFile"></input>
+                  <div className="form-group mb-3">       
+                    <input required type="number" name='price' placeholder="price" value={price} onChange={priceChange} className="form-control" id="staticEmail"></input>
+                  </div>
 
-          <button className='mt-2 form-control bg-primary text-white' type='submit'>Sell Animal</button>
-      </form>
+                  <div className="form-group mb-3">          
+                    <input required type="text" name='breed' placeholder="breed" value={breed} onChange={breedChange} className="form-control" id="inputPassword"></input>
+                  </div>
+
+                  <div className="form-group mb-3">         
+                    <input required type="number" name='age' placeholder="age" value={age} onChange={ageChange} className="form-control" id="inputPassword"></input>
+                  </div>
+
+                  <div className="form-group mb-3">                       
+                    <input required onChange={imageChange} className="form-control" type="file" id="formFile"></input>
+                  </div>
+
+                  <button className='mt-2 form-control bg-primary text-white' type='submit'>Sell Animal</button>
+              </form>
+          </div>
+        </div>
+      </div>
     </div>
     </>
   )

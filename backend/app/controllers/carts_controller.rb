@@ -1,6 +1,6 @@
 class CartsController < ApplicationController
   before_action :set_cart, only: %i[ show update destroy ]
-  before_action :verify_auth, only: %i[myAnimals index create destroy update]
+  before_action :verify_auth, only: %i[show index create destroy update]
     # GET /carts
     def index
       if @user[:user_type] == "farmer"
@@ -11,11 +11,10 @@ class CartsController < ApplicationController
           myOrders << item
         end        
       end
-      render json: myOrders
+      render json: {message:"succesfull", data:myOrders, status: :ok}
       
       else
-        render json: {message:"failed"}, status: :unauthorized
-      end
+        app_response(message:"failed", data:{info:{error:"register as a farmer"}}, status: :unauthorized)      end
     end
     # GET /carts/1
     def show

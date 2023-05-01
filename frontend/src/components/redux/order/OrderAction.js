@@ -1,4 +1,6 @@
-import { REJECT_ORDERS, ADD_ORDER, FETCH_ORDERS, LOAD_ORDERS } from "./OrderType";
+import {toast} from 'react-hot-toast'
+import { logoutFarmer } from "../farmer/FarmerAction";
+import { REJECT_ORDERS, FETCH_ERROR,  ADD_ORDER, FETCH_ORDERS, LOAD_ORDERS } from "./OrderType";
 
 export const rejectAnimal = ((id)=>{
   return{
@@ -19,11 +21,33 @@ export function fetchOrders(token) {
       })
         .then((response) => response.json())
         .then((data) =>{
-          console.log(data)
-          dispatch({
-            type: FETCH_ORDERS,
-            payload: data
-          })}
-        );
+          if (data.status === "ok") {
+            console.log(data)
+            dispatch({
+              type: FETCH_ORDERS,
+              payload: data.data
+            })}
+          else if(data.data.info === "Signature has expired"){
+            dispatch({
+              type: FETCH_ERROR,
+              payload: "token expired, login"
+            })
+            dispatch(logoutFarmer())
+            toast.error('token expired, login')
+            
+  
+          }else if(data.data.status === "unauthorized"){
+            dispatch({
+              type: FETCH_ERROR,
+              payload: "login to access content"
+            })
+            dispatch(logoutFarmer())
+            toast.error('login to access content')
+                   
+          }else{
+            console.log(data)
+          }
+
+        })
     };
 }

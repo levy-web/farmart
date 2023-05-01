@@ -36,7 +36,7 @@ function MyAnimals() {
 
     const ShowMyAnimals = () => {
       return(
-        <div className="row">
+        <div className="row justify-content-center">
          {forSaleAnimals}
         </div>
 
