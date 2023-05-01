@@ -21,22 +21,18 @@ export function fetchOrders(token) {
       })
         .then((response) => response.json())
         .then((data) =>{
-          if (data.status === "ok") {
-            console.log(data)
-            dispatch({
-              type: FETCH_ORDERS,
-              payload: data
-            })}
-          else if(data.data.info === "Signature has expired"){
+
+          if(data.info === "Signature has expired"){
             dispatch({
               type: FETCH_ERROR,
               payload: "token expired, login"
             })
             dispatch(logoutFarmer())
             toast.error('token expired, login')
+            console.log(data)
             
   
-          }else if(data.data.status === "unauthorized"){
+          }else if(data.status === "unauthorized"){
             dispatch({
               type: FETCH_ERROR,
               payload: "login to access content"
@@ -46,6 +42,10 @@ export function fetchOrders(token) {
                    
           }else{
             console.log(data)
+            dispatch({
+              type: FETCH_ORDERS,
+              payload: data
+            })
           }
 
         })
