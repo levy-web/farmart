@@ -21,7 +21,21 @@ export function fetchOrders(token) {
             Authorization: `Bearer ${token}`
           }
       })
-        .then((response) => response.json())
+        .then((response) => {
+          if (response.ok){
+          return response.json()
+          }else{
+
+            dispatch({
+              type: FETCH_ERROR,
+              payload: "please try again "
+            })
+            dispatch(logoutFarmer())
+            toast.error("please try again")
+
+          }
+        })
+
         .then((data) =>{
           console.log(data)
           dispatch({
@@ -35,7 +49,7 @@ export function fetchOrders(token) {
           type: FETCH_ERROR,
           payload: "please try again "
         })
-        dispatch(logoutFarmer)
+        dispatch(logoutFarmer())
         toast.error("please try again")
       }
     };
