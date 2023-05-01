@@ -25,7 +25,7 @@ export function fetchOrders(token) {
             console.log(data)
             dispatch({
               type: FETCH_ORDERS,
-              payload: data
+              payload: data.data
             })}
           else if(data.data.info === "Signature has expired"){
             dispatch({
