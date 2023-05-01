@@ -29,10 +29,10 @@ function App() {
         <Route path="/animal/:animalName" element={<Animal />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
-        <Route path="/cart" element={<ProtectedRoute><Cart /></ProtectedRoute>} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
+        <Route path="/checkout" element={<Checkout />} />
         {/* farm routes */}
         <Route path={'/farm/for_sale'} element={<FarmersProtectedRoute><MyAnimals/></FarmersProtectedRoute>} />
         <Route path={'/farm/add_for_sale'} element={<FarmersProtectedRoute><AddSell/></FarmersProtectedRoute>} />

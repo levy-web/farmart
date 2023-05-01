@@ -93,6 +93,13 @@ const Animals = () => {
           </button>
           <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterAnimal("Goat")}>Goats</button>
           <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterAnimal("Sheep")}>Sheep</button>
+          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterAnimal("Bird")}>Bird</button>
+          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterAnimal("Fish")}>Fish</button>
+          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterAnimal("Donkey")}>Donkey</button>
+          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterAnimal("Carmel")}>Carmel</button>
+          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterAnimal("Rabbit")}>Rabbit</button>
+          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterAnimal("Cat")}>Cat</button>
+          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterAnimal("Dog")}>Dog</button>
 
           <p>filter by animal age</p>
           <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterAnimalByAge(1)}>{`< 1`}</button>
