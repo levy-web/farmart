@@ -1,14 +1,21 @@
 import React from "react";
+import {toast} from 'react-hot-toast'
 import { Footer, Navbar } from "../components";
 import { useSelector, useDispatch } from "react-redux";
 import { addCart, delCart } from "../redux/action";
 import { Link } from "react-router-dom";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import ProtectedRoute from "../ProtectedRoutes";
+import Login from "./Login";
 
 
 const Cart = () => {
   const state = useSelector((state) => state.handleCart);
+  const buyer = useSelector((state) => state.user.buyer);
   const token = useSelector((state)=>state.user.token)
   const dispatch = useDispatch();
+  console.log(buyer)
+  
 
   const EmptyCart = () => {
     return (
@@ -25,6 +32,7 @@ const Cart = () => {
     );
   };
 
+  
   function handleSubmit(){
     state.map((item) => {
       fetch('https://farmart-api.onrender.com/carts',{
@@ -43,7 +51,6 @@ const Cart = () => {
       .then((data)=>console.log(data))
     })
   }
-  console.log(state)
 
   const addItem = (animal) => {
     dispatch(addCart(animal));
@@ -164,13 +171,52 @@ const Cart = () => {
                       </li>
                     </ul>
 
-                    <Link
+                    {/* <Link
                       // to="/checkout"
                       className="btn btn-dark btn-lg btn-block"
                       onClick={handleSubmit}
                     >
                       Go to checkout
-                    </Link>
+                    </Link> */}
+                    {buyer ? <PayPalScriptProvider options={
+                      
+                      {
+                        "client-id": "AXnhzv7-zUuVn_PtR1ZffFRBl52cuVj0muaSpIpnjs7qBJsYn8CKpjGyeZ4Z-ATpP7EQgtc9Ri1kLWhE" 
+                      }
+                      }>
+                        
+                         <PayPalButtons style={{ layout: "horizontal" }}                   
+                            createOrder={(data, actions) => {
+                              data = Math.round((subtotal + shipping)/120)
+                              
+                              return actions.order.create({
+                                  purchase_units: [
+                                      {
+                                          amount: {
+                                              value: data,
+                                          },
+                                      },
+                                  ],
+                              });
+                            }}
+                            onApprove={(data, actions) => {
+                              return actions.order.capture().then((details) => {
+                                  const name = details.payer.name.given_name;
+                                  
+                                  handleSubmit()
+                                  toast.success(`Transaction completed by ${name}`);
+                                  
+                              });
+                            }}
+                        /> 
+                       
+                    </PayPalScriptProvider> :   <Link
+                        to="/login"
+                        className="btn btn-dark btn-lg btn-block"
+                        
+                      >
+                        Login to checkout
+                      </Link>}
                   </div>
                 </div>
               </div>
