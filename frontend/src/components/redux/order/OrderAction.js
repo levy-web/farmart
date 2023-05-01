@@ -13,6 +13,8 @@ export const rejectAnimal = ((id)=>{
 export function fetchOrders(token) {
     return function (dispatch) {
       dispatch({ type: LOAD_ORDERS });
+     
+     try{
       fetch("https://farmart-api.onrender.com/carts",{
         method: "GET",
         headers: {
@@ -21,33 +23,20 @@ export function fetchOrders(token) {
       })
         .then((response) => response.json())
         .then((data) =>{
-          if (data.status === "ok") {
-            console.log(data)
-            dispatch({
-              type: FETCH_ORDERS,
-              payload: data.data.orders
-            })}
-          else if(data.data.info === "Signature has expired"){
-            dispatch({
-              type: FETCH_ERROR,
-              payload: "token expired, login"
-            })
-            dispatch(logoutFarmer())
-            toast.error('token expired, login')
-            
-  
-          }else if(data.data.status === "unauthorized"){
-            dispatch({
-              type: FETCH_ERROR,
-              payload: "login to access content"
-            })
-            dispatch(logoutFarmer())
-            toast.error('login to access content')
-                   
-          }else{
-            console.log(data)
-          }
-
+          console.log(data)
+          dispatch({
+            type: FETCH_ORDERS,
+            payload: data
+          })
         })
+      }catch(error){
+        console.log(error)
+        dispatch({
+          type: FETCH_ERROR,
+          payload: "please try again "
+        })
+        dispatch(logoutFarmer)
+        toast.error("please try again")
+      }
     };
 }
