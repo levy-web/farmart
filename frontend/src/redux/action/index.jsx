@@ -15,3 +15,9 @@ export const delCart = (animal) =>{
         payload:animal
     }
 }
+// For resetting the Cart
+export const resetCart = () =>{
+    return {
+        type:"RESET"       
+    }
+}

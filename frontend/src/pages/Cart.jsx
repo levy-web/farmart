@@ -2,7 +2,7 @@ import React from "react";
 import {toast} from 'react-hot-toast'
 import { Footer, Navbar } from "../components";
 import { useSelector, useDispatch } from "react-redux";
-import { addCart, delCart } from "../redux/action";
+import { addCart, delCart, resetCart } from "../redux/action";
 import { Link } from "react-router-dom";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import ProtectedRoute from "../ProtectedRoutes";
@@ -204,6 +204,7 @@ const Cart = () => {
                                   const name = details.payer.name.given_name;
                                   
                                   handleSubmit()
+                                  dispatch(resetCart());
                                   toast.success(`Transaction completed by ${name}`);
                                   
                               });
