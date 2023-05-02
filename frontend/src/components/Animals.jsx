@@ -100,6 +100,7 @@ const Animals = () => {
           <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterAnimal("Rabbit")}>Rabbit</button>
           <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterAnimal("Cat")}>Cat</button>
           <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterAnimal("Dog")}>Dog</button>
+          <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterAnimal("Pig")}>Pig</button>
 
           <p>filter by animal age</p>
           <button className="btn btn-outline-dark btn-sm m-2" onClick={() => filterAnimalByAge(1)}>{`< 1`}</button>

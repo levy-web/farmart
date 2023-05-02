@@ -24,6 +24,11 @@ const handleCart = (state=cart, action) =>{
             }
             break;
 
+        case "RESET":
+
+            return state = []
+            break;
+
         default:
             return state
             break;
