@@ -73,7 +73,7 @@ one = Animal.create!(
   weight: 1000,
   price: 2500,
   farmer_id: 1,
-  image_url: "https://example.com/horse.jpg"
+  image_url: "https://images.unsplash.com/photo-1598974357801-cbca100e65d3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
 )
 
 two = Animal.create!(
@@ -84,7 +84,7 @@ two = Animal.create!(
   weight: 1200,
   price: 3000,
   farmer_id: 2,
-  image_url: "https://example.com/cow.jpg"
+  image_url: "https://images.unsplash.com/photo-1527153857715-3908f2bae5e8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=788&q=80"
 )
 
 three = Animal.create!(
@@ -106,7 +106,7 @@ four = Animal.create!(
   weight: 150,
   price: 750,
   farmer_id: 1,
-  image_url: "https://example.com/sheep.jpg"
+  image_url: "https://plus.unsplash.com/premium_photo-1666777246850-e18916172de7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
 )
 
 five = Animal.create!(
@@ -117,7 +117,7 @@ five = Animal.create!(
   weight: 80,
   price: 400,
   farmer_id: 2,
-  image_url: "https://example.com/goat.jpg"
+  image_url: "https://images.unsplash.com/photo-1588466585717-f8041aec7875?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
 )
 
 one.image.attach(io: File.open(Rails.root.join("public/horrrrrse.jpg")), filename: "horrrrrse.jpg")
